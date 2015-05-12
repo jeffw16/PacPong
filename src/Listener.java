@@ -1,4 +1,0 @@
-/**
- * PacPong
- * Listener
-*/
