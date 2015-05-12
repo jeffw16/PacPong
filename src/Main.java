@@ -1,6 +1,6 @@
 /**
  * PacPong
- * Listener
+ * Main
 */
 import javax.swing.*;
 import java.awt.*;
@@ -54,8 +54,9 @@ panel.keyReleased(e);
 */
 private void initialize() {
 this.setResizable(false);
-this.setBounds(new Rectangle(, , , ));
-this.setTitle("Pong");
+this.setSize(2,4);
+
+this.setTitle("PacPong");
 }
 
 /**
