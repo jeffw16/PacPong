@@ -9,18 +9,17 @@ import javax.swing.*;
 
 public class Canvas extends JPanel implements Runnable {
 
-  private static final long serialVersionUID = 1L;
-  // Positions on X and Y for the ball, player 1 and player 2
+  private static final long serialVersionUID = 1L;   // Positions on X and Y for the ball, player 1 and player 2
   private int ballX = 10, ballY = 100, p1X=10, p1Y=100, p2X=230, p2Y=100;
   Thread ppthread;
-  int right = 5; // to the right
-  int left = -5; //to the left
-  int up = 5; // upward
-  int down = -5; // down
-  // Scores
-  int score1 = 0, score2 = 0;
-  boolean player1FlagArr,player1FlagAba, player2FlagArr, player2FlagAba;
-  boolean game, gameOver;
+    int right = 5; // to the right
+    int left = -5; //to the left
+    int up = 5; // upward
+    int down = -5; // down
+     // Scores
+     int score1 = 0, score2 = 0;
+    boolean player1FlagArr,player1FlagAba, player2FlagArr, player2FlagAba;
+    boolean game, gameOver;
   
   public Canvas() {
     game = true;
@@ -29,24 +28,24 @@ public class Canvas extends JPanel implements Runnable {
   }
 
   // Draw ball and ships
-  public void paintComponent(Graphics gc) {
-    setOpaque(false);
-    super.paintComponent(gc);
+  public void paintComponent(Graphics g) {
+    setOpaque(true);
+    super.paintComponent(g);
     
     // Draw ball
-    gc.setColor(Color.WHITE);
-    gc.fillOval(ballX, ballY, 8,8);
+    g.setColor(Color.WHITE);
+    g.fillRect(ballX, ballY, ballX-10, ballY-10);
     
-    // Draw ships
-    gc.fillRect(p1X, p1Y, 10, 25);
-    gc.fillRect(p2X, p2Y, 10, 25);
+    // Draw paddles
+    g.fillRect(p1X, p1Y, 10, 25);
+    g.fillRect(p2X, p2Y, 10, 25);
 
     //Draw scores
-    gc.drawString("player1: "+score1, 25, 10);
-    gc.drawString("player2: "+score2, 150, 10);
+    g.drawString(score1, getWidth()/4, 100);
+    g.drawString(score2, (getWidth()/4)*3, 100);
 
     if ( gameOver ) {
-      gc.drawString("Game Over", 100, 125);
+      g.drawString("Game Over", 100, 125);
     }
   } // end paintComponent
 
