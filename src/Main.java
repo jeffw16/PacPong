@@ -17,13 +17,14 @@ public class Main extends JFrame {
     return panel;
   } // end getPanel
   
-  public Main (int x, int y) {
+  public Main (int gameWidth, int gameHeight) {
     super();
-    initialize(x, y);
-  } // end constructor
-  
-  // Listeners for the keyboard
-  this.addKeyListener(new KeyAdapter()) {
+    initialize(gameWidth, gameHeight);
+     // end constructor
+     this.addKeyListener(new KeyAdapter()) 
+  }
+    
+    //Listeners for the keyboard
     public void keyPressed(KeyEvent e) {
       formKeyPressed(e);
       } // end keyPressed
@@ -55,7 +56,16 @@ public class Main extends JFrame {
   *
   * @return void
   */
-  private void initialize(gameWidth, gameHeight) {//vars need to be initialized somewhere else
+  
+  //getWidth and getHeight methods for later scaling use
+  
+  public void getWidth(){
+    return gameWidth;
+  }
+  public void getHeight{
+    return gameHeight;
+  }
+  private void initialize(gameWidth, gameHeight) {
   
     this.setResizable(false);
     this.setSize(gameWidth, gameHeight);
