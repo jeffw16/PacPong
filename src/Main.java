@@ -55,9 +55,10 @@ public class Main extends JFrame {
   *
   * @return void
   */
-  private void initialize() {
+  private void initialize(gameWidth, gameHeight) {//vars need to be initialized somewhere else
+  
     this.setResizable(false);
-    this.setSize(720,1080);
+    this.setSize(gameWidth, gameHeight);
     this.setTitle("PacPong");
   }
 
