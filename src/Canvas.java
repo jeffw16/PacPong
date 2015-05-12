@@ -33,7 +33,7 @@ setOpaque(false);
 super.paintComponent(gc);
 
 // Draw ball
-gc.setColor(Color.black);
+gc.setColor(Color.WHITE);
 gc.fillOval(ballX, ballY, 8,8);
 
 // Draw ships
