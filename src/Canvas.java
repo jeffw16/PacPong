@@ -11,6 +11,7 @@ public class Canvas extends JPanel implements Runnable {
 
  private int height = 0;
  private int width = 0;
+ 
   private static final long serialVersionUID = 1L;   // Positions on X and Y for the ball, player 1 and player 2
   private int ballX = 10, ballY = 100, p1X=10, p1Y=100, p2X=230, p2Y=100;
   Thread ppthread;
@@ -44,7 +45,7 @@ public class Canvas extends JPanel implements Runnable {
     g.fillRect(p1X, p1Y, 10, 25);
     g.fillRect(p2X, p2Y, 10, 25);
 
-    //Draw scores
+    //Draw scores and calculate for X locations
     g.drawString(score1, width/4, 100);
     g.drawString(score2, (width/4)*3, 100);
 
