@@ -7,87 +7,82 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Main extends JFrame {
+  private JPanel jContentPane = null;
+  private Canvas panel = null; // This is the panel of the game class
 
-private JPanel jContentPane = null;
+  private Canvas getPanel() {
+    if ( panel == null ) {
+      panel = new Canvas(); // The panel is created
+    }
+    return panel;
+  } // end getPanel
+  
+  public Main () {
+    super();
+    initialize();
+  } // end constructor
+  
+  // Listeners for the keyboard
+  this.addKeyListener(new KeyAdapter()) {
+    public void keyPressed(KeyEvent e) {
+      formKeyPressed(e);
+      } // end keyPressed
+    
+      /**
+       * Sends key released
+      */
+     public void keyReleased(KeyEvent e) {
+      formKeyReleased(e);
+    }
+  });
 
-private Canvas panel = null; // This is the panel of the game class
+  /**
+    * Will send the key _pressed_ to the game class
+  */
+  private void formKeyPressed(KeyEvent e) {
+    panel.keyPressed(e);
+  }
 
-private Canvas getPanel() {
-if (panel == null) {
-panel = new Canvas(); // The panel is created
-}
-return panel;
-}
+  /**
+   * Will send the key _released_ to the game class
+   */
+  private void formKeyReleased(KeyEvent e) {
+    panel.keyReleased(e);
+  }
 
-public Main() {
-super();
-initialize();
-// Listeners for the keyboard
-this.addKeyListener(new KeyAdapter()) {
-public void keyPressed(KeyEvent e) {
-formKeyPressed(e);
-}
+  /**
+  * This method initializes the game
+  *
+  * @return void
+  */
+  private void initialize() {
+    this.setResizable(false);
+    this.setSize(720,1080);
+    this.setTitle("PacPong");
+  }
 
-/**
- * Sends key released
-*/
-public void keyReleased(KeyEvent e) {
-formKeyReleased(e);
-}
-});
+  /**
+  * This method initializes jContentPane
+  *
+  * @return javax.swing.JPanel
+  */
+  private JPanel getJContentPane() {
+    if (jContentPane == null) {
+      jContentPane = new JPanel();
+      jContentPane.setLayout(new BorderLayout());
+      jContentPane.add(getPanel(), BorderLayout.CENTER);
+    }
+    return jContentPane;
+  }
 
-}
-
-/**
- * Will send the key _pressed_ to the game class
-*/
-private void formKeyPressed(KeyEvent e)
-{
-panel.keyPressed(e);
-}
-
-/**
- * Will send the key _released_ to the game class
- */
-private void formKeyReleased(KeyEvent e)
-{
-panel.keyReleased(e);
-}
-
-/**
-* This method initializes the game
-*
-* @return void
-*/
-private void initialize() {
-this.setResizable(false);
-this.setSize(720,1080);
-
-this.setTitle("PacPong");
-}
-
-/**
-* This method initializes jContentPane
-*
-* @return javax.swing.JPanel
-*/
-private JPanel getJContentPane() {
-if (jContentPane == null) {
-jContentPane = new JPanel();
-jContentPane.setLayout(new BorderLayout());
-jContentPane.add(getPanel(), BorderLayout.CENTER);
-}
-return jContentPane;
-}
-
-public static void main(String[] args) {
-// TODO Auto-generated method stub
-SwingUtilities.invokeLater(new Runnable() {
-public void run() {
-Main thisClass = new Main();
-thisClass.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-thisClass.setVisible(true);
-}
-});
-}
-}
+  public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    SwingUtilities.invokeLater(new Runnable() {
+      public void run() {
+        Main thisClass = new Main();
+        thisClass.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        thisClass.setVisible(true);
+      } // end run
+   }); // end invokeLater
+  } // end main method
+} // end Main class
