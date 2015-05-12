@@ -8,49 +8,43 @@ import java.awt.event.*;
 
 public class Main extends JFrame {
 
-private static final long serialVersionUID = 1L; // Eclipse added this automatically
-
 private JPanel jContentPane = null;
 
-private Panel panel = null; // This is the panel of the game class
+private Canvas panel = null; // This is the panel of the game class
 
-private Panel getPanel() {
+private Canvas getPanel() {
 if (panel == null) {
-panel = new PanelPelota(); // The panel is created
+panel = new Canvas(); // The panel is created
 }
 return panel;
 }
 
-/**
-* This is the default constructor
-*/
 public Main() {
 super();
 initialize();
 // Listeners for the keyboard
-this.addKeyListener(new KeyAdapter() {
-//Method for the key pressed
-public void keyPressed(KeyEvent evt) {
-formKeyPressed(evt);
+this.addKeyListener(new KeyAdapter()) {
+public void keyPressed(KeyEvent e) {
+formKeyPressed(e);
 }
 // Method for the key released
-public void keyReleased(KeyEvent evt) {
-formKeyReleased(evt);
+public void keyReleased(KeyEvent e) {
+formKeyReleased(e);
 }
 });
 
 }
 
 // Here i'm stating the method that will send the key pressed to the game class
-private void formKeyPressed(KeyEvent evt)
+private void formKeyPressed(KeyEvent e)
 {
-panel.keyPressed(evt);
+panel.keyPressed(e);
 }
 
 // Here i'm stating the method that will send the key released to the game class
-private void formKeyReleased(KeyEvent evt)
+private void formKeyReleased(KeyEvent e)
 {
-panel.keyReleased(evt);
+panel.keyReleased(e);
 }
 
 /**
@@ -60,10 +54,7 @@ panel.keyReleased(evt);
 */
 private void initialize() {
 this.setResizable(false);
-this.setBounds(new Rectangle(312, 184, 250, 250)); // Position on the desktop
-this.setMinimumSize(new Dimension(250, 250));
-this.setMaximumSize(new Dimension(250, 250));
-this.setContentPane(getJContentPane());
+this.setBounds(new Rectangle(, , , ));
 this.setTitle("Pong");
 }
 
