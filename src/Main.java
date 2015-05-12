@@ -27,7 +27,10 @@ this.addKeyListener(new KeyAdapter()) {
 public void keyPressed(KeyEvent e) {
 formKeyPressed(e);
 }
-// Method for the key released
+
+/**
+ * Sends key released
+*/
 public void keyReleased(KeyEvent e) {
 formKeyReleased(e);
 }
@@ -35,20 +38,24 @@ formKeyReleased(e);
 
 }
 
-// Here i'm stating the method that will send the key pressed to the game class
+/**
+ * Will send the key _pressed_ to the game class
+*/
 private void formKeyPressed(KeyEvent e)
 {
 panel.keyPressed(e);
 }
 
-// Here i'm stating the method that will send the key released to the game class
+/**
+ * Will send the key _released_ to the game class
+ */
 private void formKeyReleased(KeyEvent e)
 {
 panel.keyReleased(e);
 }
 
 /**
-* This method initializes this
+* This method initializes the game
 *
 * @return void
 */
