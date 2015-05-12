@@ -59,10 +59,10 @@ public class Main extends JFrame {
   
   //getWidth and getHeight methods for later scaling use
   
-  public void getWidth(){
+  public int getWidth(){
     return gameWidth;
   }
-  public void getHeight{
+  public int getHeight{
     return gameHeight;
   }
   private void initialize(gameWidth, gameHeight) {
