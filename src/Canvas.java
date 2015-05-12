@@ -8,7 +8,6 @@ import javax.swing.*;
 
 
 public class Canvas extends JPanel implements Runnable {
-
 private static final long serialVersionUID = 1L;
 // Positions on X and Y for the ball, player 1 and player 2
 private int ballX = 10, ballY = 100, p1X=10, p1Y=100, p2X=230, p2Y=100;
@@ -60,9 +59,9 @@ repaint();
 }
 
 // Here we receive from the game container class the key pressed
-public void keyPressed(KeyEvent evt)
+public void keyPressed(KeyEvent e)
 {
-switch(evt.getKeyCode())
+switch(e.getKeyCode())
 {
 // Move ship 1
 case KeyEvent.VK_W :
@@ -83,9 +82,9 @@ break;
 }
 
 // Here we receive from the game container class the key released
-public void keyReleased(KeyEvent evt)
+public void keyReleased(KeyEvent e)
 {
-switch(evt.getKeyCode())
+switch(e.getKeyCode())
 {
 // Mover Nave1
 case KeyEvent.VK_W :
@@ -97,10 +96,10 @@ break;
 
 // Mover nave 2
 case KeyEvent.VK_UP:
-player2FlagArr=false;
+player2FlagArr = false;
 break;
 case KeyEvent.VK_DOWN:
-player2FlagAba=false;
+player2FlagAba = false;
 break;
 }
 }
