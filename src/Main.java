@@ -17,9 +17,9 @@ public class Main extends JFrame {
     return panel;
   } // end getPanel
   
-  public Main () {
+  public Main (int x, int y) {
     super();
-    initialize();
+    initialize(x, y);
   } // end constructor
   
   // Listeners for the keyboard
