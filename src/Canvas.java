@@ -9,6 +9,8 @@ import javax.swing.*;
 
 public class Canvas extends JPanel implements Runnable {
 
+ private int height = 0;
+ private int width = 0;
   private static final long serialVersionUID = 1L;   // Positions on X and Y for the ball, player 1 and player 2
   private int ballX = 10, ballY = 100, p1X=10, p1Y=100, p2X=230, p2Y=100;
   Thread ppthread;
@@ -21,7 +23,9 @@ public class Canvas extends JPanel implements Runnable {
     boolean player1FlagArr,player1FlagAba, player2FlagArr, player2FlagAba;
     boolean game, gameOver;
   
-  public Canvas() {
+  public Canvas(int x, int y) {
+    height = x;
+    width = y;
     game = true;
     ppthread = new Thread(this);
     ppthread.start();
@@ -41,8 +45,8 @@ public class Canvas extends JPanel implements Runnable {
     g.fillRect(p2X, p2Y, 10, 25);
 
     //Draw scores
-    g.drawString(score1, getWidth()/4, 100);
-    g.drawString(score2, (getWidth()/4)*3, 100);
+    g.drawString(score1, width/4, 100);
+    g.drawString(score2, (width/4)*3, 100);
 
     if ( gameOver ) {
       g.drawString("Game Over", 100, 125);
