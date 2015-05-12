@@ -61,7 +61,7 @@ panel.keyReleased(e);
 */
 private void initialize() {
 this.setResizable(false);
-this.setSize(2,4);
+this.setSize(720,1080);
 
 this.setTitle("PacPong");
 }
