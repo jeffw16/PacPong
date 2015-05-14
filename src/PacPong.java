@@ -5,14 +5,13 @@
 class PacPong {
   private int p1Y = 
   public static void main ( String[] args ) {
-    Listener listen = new Listener();
+    Listener l = new Listener();
     PacPong ppgame = new PacPong ( listen );
   }
   public PacPong( Listener listen ) {
     boolean gameRunning = true;
+    Canvas canvas = new Canvas ( listen );
     while ( gameRunning ) {
-      Canvas canvas = new Canvas ( listen );
-      if ( game ) {
         // The ball move from left to right
         if ( ballright ) {
           ballX += right;
@@ -38,11 +37,11 @@ class PacPong {
               ballup = true;
             }
           }
-          moveBall(ballX, ballY);
+          canvas.moveBall(ballX, ballY);
           // Move player 1
-          shouldMovePlayer1();
+          l.shouldMovePlayer1();
           // Move player 2
-          shouldMovePlayer2();
+          l.shouldMovePlayer2();
           // The score of the player 1 increase
           if (ballX >= (width - 8)) {
             score1++;
