@@ -55,7 +55,7 @@ public class Canvas extends JPanel implements Runnable {
   } // end paintComponent
 
   // Positions on X and Y for the ball
-  public void moveBall (int nx, int ny) {
+  public static void moveBall (int nx, int ny) {
     ballX = nx;
     ballY = ny;
     repaint();
