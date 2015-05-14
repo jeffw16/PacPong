@@ -32,7 +32,7 @@ class PacPong {
     Listener l = new Listener();
     PacPong ppgame = new PacPong ( l, screenSizeX, screenSizeY );
   }
-  public PacPong( Listener l, int screenSizeX, int screenSizeY ) {
+  public PacPong( Listener l, int screenSizeX, int screenSizeY, int ballSpeed ) {
     boolean gameRunning = true;
     Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
     while ( gameRunning ) {
@@ -63,9 +63,26 @@ class PacPong {
           }
           canvas.moveBall(ballX, ballY);
           // Move player 1
-          l.shouldMovePlayer1();
+          int smp1 = l.shouldMovePlayer1();
           // Move player 2
-          l.shouldMovePlayer2();
+          int smp2 = l.shouldMovePlayer2();
+          
+          if ( smp1 == 1) {
+            
+          } else if ( smp1 == 0 ) {
+            
+          } else if ( smp1 == -1 ) {
+            
+          }
+          
+          if ( smp2 == 1) {
+            
+          } else if ( smp2 == 0 ) {
+            
+          } else if ( smp2 == -1 ) {
+            
+          }
+          
           // The score of the player 1 increase
           if (ballX >= (width - 8)) {
             score1++;
