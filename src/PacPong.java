@@ -12,8 +12,7 @@ class PacPong {
     boolean gameRunning = true;
     while ( gameRunning ) {
       Canvas canvas = new Canvas ( listen );
-
-  if ( game ) {
+      if ( game ) {
         // The ball move from left to right
         if ( ballright ) {
           ballX += right;
@@ -53,8 +52,23 @@ class PacPong {
             score2++;
           }
 
+          // Game over. Here you can change 10 to any value
+          // When the score reach to the value, the game will end
+          if (score1 == 10 || score2 == 10 ) {
+            game = false;
+            gameOver = true;
+          }
 
+          // The ball stroke with the player 1
+          if ( ballX == p1X+10 && ballY >= p1Y && ballY <= ( p1Y+25 ) ) {
+            ballright=true;
+          }
 
+          // The ball stroke with the player 2
+          if(ballX==(p2X-5) && ballY>=p2Y && ballY<=(p2Y+25)) {
+            ballright=false;
+          }
+       }
     }
   }
 }
