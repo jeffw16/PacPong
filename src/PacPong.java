@@ -32,7 +32,7 @@ class PacPong {
     Listener l = new Listener();
     PacPong ppgame = new PacPong ( l, screenSizeX, screenSizeY );
   }
-  public PacPong( Listener l, int screenSizeX, int screenSizeY, int ballSpeed ) {
+  public PacPong( Listener l, int screenSizeX, int screenSizeY ) {
     boolean gameRunning = true;
     Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
     while ( gameRunning ) {
