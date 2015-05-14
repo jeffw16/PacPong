@@ -12,7 +12,7 @@ public class Canvas extends JPanel implements Runnable {
  private int height = 0;
  private int width = 0;
  
-  private static final long serialVersionUID = 1L;   // Positions on X and Y for the ball, player 1 and player 2
+ 
   private int ballX, ballY, p1X, p1Y, p2X, p2Y;
     private int move;
     private int ballspeed;
@@ -55,15 +55,13 @@ public class Canvas extends JPanel implements Runnable {
     ballY = ny;
     repaint();
   } // end moveBall
-   public void movePlayer1(int x, int y){
-this.p1X = x;
-this.p1Y = y;
+   public void movePlayer1UP(){
+p1Y+=move;
 repaint();
 }
 // Position on Y for the player 2
-public void movePlayer2(int x, int y){
-this.p2X = x;
-this.p2Y = y;
+public void movePlayer2UP(int x, int y){
+p2Y+=move;
 repaint();
 }
 }
