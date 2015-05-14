@@ -2,15 +2,39 @@
  * PacPong
  * Runner
 */
+
+import java.util.*;
+import java.io.*;
+
 class PacPong {
-  private int p1Y = 
+  private int p1Y = 0;
   public static void main ( String[] args ) {
+    Scanner chooseScreenSize = new Scanner ( System.in );
+    System.out.println ( "Screen size? 1 = 800x600, 2 = 1600x900, 3 = fullscreen: " );
+    try {
+      int screenSizeSelection = chooseScreenSize.nextInt();
+    } catch ( Exception e ) {
+      System.out.println ( "Invalid input; we will default your selection to 800x600." );
+      int screenSizeSelection = 1;
+    }
+    if ( screenSizeSelection == 1 ) {
+      int screenSizeX = 800;
+      int screenSizeY = 600;
+    } else if ( screenSizeSelection == 2 ) {
+      int screenSizeX = 1600;
+      int screenSizeY = 900;
+    } else if ( screenSizeSelection == 3 ) {
+      int screenSizeX = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
+      int screenSizeY = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
+    } else {
+      // add failsafe later here
+    }
     Listener l = new Listener();
-    PacPong ppgame = new PacPong ( listen );
+    PacPong ppgame = new PacPong ( l, screenSizeX, screenSizeY );
   }
-  public PacPong( Listener listen ) {
+  public PacPong( Listener l, int screenSizeX, int screenSizeY ) {
     boolean gameRunning = true;
-    Canvas canvas = new Canvas ( listen );
+    Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
     while ( gameRunning ) {
         // The ball move from left to right
         if ( ballright ) {
