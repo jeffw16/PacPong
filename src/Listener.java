@@ -52,39 +52,28 @@ public void keyPressed(KeyEvent e) {
  } // end keyReleased
 
  // Move player 1
- public void shouldMovePlayer1 () {
+ public int shouldMovePlayer1 () {
    if (player1Up == true && p1Y >= 0) {
-     p1Y += down;
+     return -1;
    }
    if (player1FlagAba == true && p1Y <= (this.getHeight()-25)) {
-     p1Y += up;
+     return 1;
    }
-   movePlayer1(p1X, p1Y);
-   
+   else{
+     return 0;
+   }
  } // end shouldMovePlayer1
 
  // Move player 2
- public void shouldMovePlayer2() {
+ public int shouldMovePlayer2() {
    if (player2FlagArr == true && p2Y >= 0) {
-     p2Y += down;
+     return -1;
    }
    if (player2FlagAba == true && p2Y <= (this.getHeight()-25)) {
-     p2Y += up;
+     return 1;
    }
-   movePlayer2(p2X, p2Y);
+   else{
+     return 0;
+   } 
  }
-
- // Position on Y for the player 1
- public void movePlayer1(int x, int y){
-   this.p1X = x;
-   this.p1Y = y;
-   repaint();
- }
- // Position on Y for the player 2
- public void movePlayer2(int x, int y){
-   this.p2X = x;
-   this.p2Y = y;
-   repaint();
- }
-
 }
