@@ -13,23 +13,18 @@ public class Canvas extends JPanel implements Runnable {
  private int width = 0;
  
   private static final long serialVersionUID = 1L;   // Positions on X and Y for the ball, player 1 and player 2
-  private int ballX = 10, ballY = 100, p1X=10, p1Y=100, p2X=230, p2Y=100;
-  Thread ppthread;
-    int right = 5; // to the right
-    int left = -5; //to the left
-    int up = 5; // upward
-    int down = -5; // down
-     // Scores
-     int score1 = 0, score2 = 0;
+  private int ballX, ballY, p1X, p1Y, p2X, p2Y;
+    private int move;
+    private int ballspeed;
+    int score1 = 0, score2 = 0;
     boolean player1FlagArr,player1FlagAba, player2FlagArr, player2FlagAba;
-    boolean game, gameOver;
-  
+
   public Canvas(int x, int y) {
     height = x;
     width = y;
-    game = true;
-    ppthread = new Thread(this);
-    ppthread.start();
+    move = height/45;
+    ballspeed = width/60;
+    
   }
 
   // Draw ball and ships
