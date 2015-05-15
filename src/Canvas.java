@@ -26,7 +26,9 @@ public class Canvas extends JPanel implements Runnable {
     ballspeed = width/60;
     
   }
-
+  public int getMove(){
+     return move;
+  }
   // Draw ball and ships
   public void paintComponent(Graphics g) {
     setOpaque(true);
