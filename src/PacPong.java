@@ -37,8 +37,8 @@ class PacPong {
     Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
     canvas.paintcomponent;
     int X, Y;
-    X = 
-    Y = 
+    X = canvas.ballX();
+    Y = canvas.ballY();
     while ( gameRunning ) {
       boolean ballright, ballup;
    if (Math.random()>.5)
