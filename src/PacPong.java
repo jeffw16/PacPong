@@ -35,33 +35,42 @@ class PacPong {
   public PacPong( Listener l, int screenSizeX, int screenSizeY ) {
     boolean gameRunning = true;
     Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
+    canvas.paintcomponent;
+    int X, Y;
+    X = 
+    Y = 
     while ( gameRunning ) {
-        // The ball move from left to right
+      boolean ballright, ballup;
+   if (Math.random()>.5)
+       ballright=true;
+     else
+       ballright=false;
+       // The ball move from left to right
         if ( ballright ) {
-          ballX += right;
-          if (ballX >= (width - 8))
+          X += move;
+          if (X >= (width - 8))
             ballright= false;
           } else {
-            ballX += left;
-            if ( ballX <= 0) {
+            X += move;
+            if ( X <= 0) {
               ballright = true;
             }
           }
           // The ball moves from up to down
           if ( ballup ) {
             // go up
-            ballY += up;
-            if (ballY >= (length - 8)) {
+            Y += move;
+            if (Y >= (length - 8)) {
               ballup= false;
             }
           } else {
             // go down
-            ballY += down;
-            if ( ballY <= 0 ) {
+            Y += down;
+            if ( Y <= 0 ) {
               ballup = true;
             }
           }
-          canvas.moveBall(ballX, ballY);
+          canvas.moveBall(X, Y);
           // Move player 1
           int smp1 = l.shouldMovePlayer1();
           // Move player 2
@@ -84,11 +93,11 @@ class PacPong {
           }
           
           // The score of the player 1 increase
-          if (ballX >= (width - 8)) {
+          if (X >= (width - 8)) {
             score1++;
           }
           // The score of the player 2 increase
-          if ( ballX == 0 ) {
+          if ( X == 0 ) {
             score2++;
           }
 
@@ -100,12 +109,12 @@ class PacPong {
           }
 
           // The ball stroke with the player 1
-          if ( ballX == p1X+10 && ballY >= p1Y && ballY <= ( p1Y+25 ) ) {
+          if ( X == p1X+10 && Y >= p1Y && Y <= ( p1Y+25 ) ) {
             ballright=true;
           }
 
           // The ball stroke with the player 2
-          if(ballX==(p2X-5) && ballY>=p2Y && ballY<=(p2Y+25)) {
+          if(==(p2X-5) && Y>=p2Y && Y<=(p2Y+25)) {
             ballright=false;
           }
        }
