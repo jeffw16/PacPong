@@ -24,11 +24,27 @@ public class Canvas extends JPanel implements Runnable {
     width = y;
     move = height/45;
     ballspeed = width/60;
+    ballX = width/2;
+    ballY = height/2;
+    p1Y = height/2;
+    p2Y = height/2;
+    p1X = width/40;
+    p2X = (width /40)*39;
     
   }
   public int getMove(){
      return move;
   }
+  
+  //accessor methods for ball x and y
+   public int ballX(){
+      return ballX;
+  }
+  
+  public int ballY(){
+      return ballY; 
+  }
+  
   // Draw ball and ships
   public void paintComponent(Graphics g) {
     setOpaque(true);
@@ -36,7 +52,7 @@ public class Canvas extends JPanel implements Runnable {
     
     // Draw ball
     g.setColor(Color.WHITE);
-    g.fillRect(ballX, ballY, ballX-10, ballY-10);
+    g.fillRect(ballX, ballY, ballX-(width/192), ballY-(height/108);
     
     // Draw paddles
     g.fillRect(p1X, p1Y, 10, 25);
