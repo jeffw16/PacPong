@@ -77,19 +77,19 @@ class PacPong {
           int smp2 = l.shouldMovePlayer2();
           
           if ( smp1 == 1) {
-            
+            canvas.movePlayer1UP();
           } else if ( smp1 == 0 ) {
-            
+            //do nothing
           } else if ( smp1 == -1 ) {
-            
+            canvas.movePlayer1D();
           }
           
           if ( smp2 == 1) {
-            
+            canvas.movePlayer2UP();
           } else if ( smp2 == 0 ) {
-            
+            //do nothing
           } else if ( smp2 == -1 ) {
-            
+            canvas.movePlayer2D();
           }
           
           // The score of the player 1 increase
