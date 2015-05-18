@@ -17,7 +17,6 @@ public class Canvas extends JPanel implements Runnable {
     private int move;
     private int ballspeed;
     int score1 = 0, score2 = 0;
-    boolean player1FlagArr,player1FlagAba, player2FlagArr, player2FlagAba;
 
   public Canvas(int x, int y) {
     height = x;
