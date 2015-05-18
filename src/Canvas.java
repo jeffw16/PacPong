@@ -36,7 +36,7 @@ public class Canvas extends JPanel implements Runnable {
      return move;
   }
   
-  // accessor methods for ball x and y
+  //accessor methods for ball x and y
    public int ballX(){
       return ballX;
   }
@@ -58,7 +58,7 @@ public class Canvas extends JPanel implements Runnable {
     g.fillRect(p1X, p1Y, 10, 25);
     g.fillRect(p2X, p2Y, 10, 25);
 
-    // Draw scores and calculate for X locations
+    //Draw scores and calculate for X locations
     g.drawString(score1, width/4, 100);
     g.drawString(score2, (width/4)*3, 100);
 
@@ -73,13 +73,22 @@ public class Canvas extends JPanel implements Runnable {
     ballY = ny;
     repaint();
   } // end moveBall
-  public void movePlayer1UP(){
-   p1Y+=move;
-   repaint();
-  }
-  // Position on Y for the player 2
-  public void movePlayer2UP(int x, int y){
-   p2Y+=move;
-   repaint();
- }
+public void movePlayer1UP(){
+ p1Y+=move;
+ repaint();
+}
+// Position on Y for the player 2
+public void movePlayer2UP(){
+ p2Y+=move;
+ repaint();
+}
+public void movePlayer1D(){
+ p1Y-=move;
+ repaint();
+}
+public void movePlayer2D(){
+ p1Y-=move;
+ repaint();
+}
+
 }
