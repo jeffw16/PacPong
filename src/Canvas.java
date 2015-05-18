@@ -51,15 +51,15 @@ public class Canvas extends JPanel implements Runnable {
     
     // Draw ball
     g.setColor(Color.WHITE);
-    g.fillRect(ballX, ballY, ballX-(width/192), ballY-(height/108);
+    g.fillRect(ballX, ballY, ballX-(width/192), ballY-(height/108) );
     
     // Draw paddles
     g.fillRect(p1X, p1Y, 10, 25);
     g.fillRect(p2X, p2Y, 10, 25);
 
     //Draw scores and calculate for X locations
-    g.drawString(score1, width/4, 100);
-    g.drawString(score2, (width/4)*3, 100);
+    g.drawString("" + score1, width/4, 100);
+    g.drawString("" + score2, (width/4)*3, 100);
 
     if ( gameOver ) {
       g.drawString("Game Over", 100, 125);
