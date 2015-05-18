@@ -43,7 +43,7 @@ public void keyPressed(KeyEvent e) {
 
    // Move player 2
    case KeyEvent.VK_UP:
-     player2Upr = false;
+     player2Up = false;
      break;
    case KeyEvent.VK_DOWN:
      player2Down = false;
@@ -54,10 +54,10 @@ public void keyPressed(KeyEvent e) {
  // Move player 1
  public int shouldMovePlayer1 () {
    if (player1Up == true && p1Y >= 0) {
-     return -1;
-   }
-   if (player1FlagAba == true && p1Y <= (this.getHeight()-25)) {
      return 1;
+   }
+   if (player1Down == true && p1Y <= (this.getHeight()-25)) {
+     return -1;
    }
    else{
      return 0;
@@ -66,11 +66,11 @@ public void keyPressed(KeyEvent e) {
 
  // Move player 2
  public int shouldMovePlayer2() {
-   if (player2FlagArr == true && p2Y >= 0) {
-     return -1;
-   }
-   if (player2FlagAba == true && p2Y <= (this.getHeight()-25)) {
+   if (player2Up == true && p2Y >= 0) {
      return 1;
+   }
+   if (player2Down == true && p2Y <= (this.getHeight()-25)) {
+     return -1;
    }
    else{
      return 0;
