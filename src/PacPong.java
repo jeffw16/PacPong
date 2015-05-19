@@ -6,7 +6,6 @@
 import java.util.Scanner;
 
 class PacPong {
-  private int p1Y = 0;
   public static void main ( String[] args ) {
     Scanner chooseScreenSize = new Scanner ( System.in );
     System.out.println ( "Screen size? 1 = 800x600, 2 = 1600x900, 3 = fullscreen: " );
