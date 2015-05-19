@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.*;
 
 
-public class Canvas extends JPanel implements Runnable {
+public class Canvas extends JPanel {
 
  private int height = 0;
  private int width = 0;
