@@ -35,23 +35,23 @@ class PacPong {
   }
   public PacPong( Listener l, int screenSizeX, int screenSizeY ) {
     boolean game = true;
+    boolean ballright, ballup;
     Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
     canvas.paintComponent(); // add object with type Graphics
     int X, Y, score1, score2;
     score1=0;
     score2=0;
+     if (Math.random()>.5) {
+        ballright=true;
+      } else {
+        ballright=false;
+      }
     while ( game ) {
       X = canvas.ballX();
       Y = canvas.ballY();
       int height = canvas.getHeight();
       int width = canvas.getWidth();
       int move = canvas.getMove();
-      boolean ballright, ballup;
-      if (Math.random()>.5) {
-        ballright=true;
-      } else {
-        ballright=false;
-      }
       // The ball move from left to right
       if ( ballright ) {
         X += move; // move not found
