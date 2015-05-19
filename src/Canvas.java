@@ -76,15 +76,15 @@ public class Canvas extends JPanel implements Runnable {
     ballY = ny;
     repaint();
   } // end moveBall
-public void movePlayer1UP(){
- p1Y+=move;
- repaint();
-}
-// Position on Y for the player 2
-public void movePlayer2UP(){
- p2Y+=move;
- repaint();
-}
+  public void movePlayer1UP(){
+   p1Y+=move;
+   repaint();
+  }
+  // Position on Y for the player 2
+  public void movePlayer2UP(){
+   p2Y+=move;
+   repaint();
+  }
 public void movePlayer1D(){
  p1Y-=move;
  repaint();
@@ -93,5 +93,16 @@ public void movePlayer2D(){
  p1Y-=move;
  repaint();
 }
-
+public int getp1X () {
+ return p1X;
 }
+public int getp1Y () {
+ return p1Y;
+}
+   public int getp2X () {
+    return p2X;
+   }
+   public int getp2Y () {
+    return p2Y;
+   }
+  }
