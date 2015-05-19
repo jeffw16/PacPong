@@ -34,7 +34,9 @@ public class Canvas extends JPanel implements Runnable {
   public int getMove(){
      return move;
   }
-  
+  public int getMove(){
+     return move;
+  }
   //accessor methods for ball x and y
    public int ballX(){
       return ballX;
