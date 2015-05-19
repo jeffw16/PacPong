@@ -36,7 +36,6 @@ class PacPong {
     boolean game = true;
     boolean ballright, ballup;
     Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
-    canvas.paintComponent(); // add object with type Graphics
     int X, Y, score1, score2;
     score1=0;
     score2=0;
@@ -113,10 +112,22 @@ class PacPong {
       // The ball stroke with the player 1
       if ( X == p1X+10 && Y >= p1Y && Y <= ( p1Y+25 ) ) {
         ballright=true;
-      }
+        if(smp1==1){
+        ballup = true;
+        }
+        if(smp1==-1){
+          ballup=false;
+        }
+        }
       // The ball stroke with the player 2
       if( X ==(p2X-5) && Y>=p2Y && Y<=(p2Y+25)) {
         ballright=false;
+        if(smp2==1){
+          ballup=true;
+        }
+        if(smp2==-1){
+          ballup=false;
+        }
       }
      }
     }
