@@ -34,13 +34,16 @@ class PacPong {
     PacPong ppgame = new PacPong ( l, screenSizeX, screenSizeY );
   }
   public PacPong( Listener l, int screenSizeX, int screenSizeY ) {
-    boolean gameRunning = true;
+    boolean game = true;
     Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
-    canvas.paintComponent( ); // add object with type Graphics
+    canvas.paintComponent(); // add object with type Graphics
     int X, Y;
     X = canvas.ballX();
     Y = canvas.ballY();
-    while ( gameRunning ) {
+    while ( game ) {
+      int length = canvas.getLength();
+      int width = canvas.getWidth();
+      int move = canvas.getMove();
       boolean ballright, ballup;
       if (Math.random()>.5) {
         ballright=true;
@@ -54,7 +57,7 @@ class PacPong {
           ballright= false;
         }
       } else {
-        X += move; // move not found
+        X += move; 
         if ( X <= 0) {
           ballright = true;
         }
@@ -99,8 +102,6 @@ class PacPong {
        * width
        * score1
        * score2
-       * game
-       * gameOver
        * p1X
        * p2X
        * p2Y
@@ -118,7 +119,6 @@ class PacPong {
       // When the score reach to the value, the game will end
       if (score1 == 10 || score2 == 10 ) {
         game = false;
-        gameOver = true;
       }
       // The ball stroke with the player 1
       if ( X == p1X+10 && Y >= p1Y && Y <= ( p1Y+25 ) ) {
