@@ -106,9 +106,11 @@ class PacPong {
         game=false;
         canvas.paintcomponent(game);
       }
-     int p1x, p1y, p2x, p2y;
-     p1x=canvas.getp1X();
-     p1x=canvas.getp1X();
+     int p1X, p1Y, p2X, p2Y;
+     p1X=canvas.getp1X();
+     p2X=canvas.getp2X();
+     p1Y=canvas.getp1Y();
+     p1Y=canvas.getp2Y();
       // The ball stroke with the player 1
       if ( X == p1X+10 && Y >= p1Y && Y <= ( p1Y+25 ) ) {
         ballright=true;
