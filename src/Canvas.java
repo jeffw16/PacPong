@@ -40,7 +40,6 @@ public class Canvas extends JPanel implements Runnable {
   public int getHeight(){
      return height;
   }
-  //accessor methods for ball x and y
    public int ballX(){
       return ballX;
   }
@@ -48,9 +47,14 @@ public class Canvas extends JPanel implements Runnable {
   public int ballY(){
       return ballY; 
   }
-  
+  public void setScore1(int s){
+   score1=s;
+  }
+  public void setScore2(int s){
+   score2=s;
+  }
   // Draw ball and ships
-  public void paintComponent(Graphics g) {
+  public void paintComponent(Graphics g, boolean g) {
     setOpaque(true);
     super.paintComponent(g);
     
@@ -66,8 +70,8 @@ public class Canvas extends JPanel implements Runnable {
     g.drawString("" + score1, width/4, 100);
     g.drawString("" + score2, (width/4)*3, 100);
 
-    if ( gameOver ) {
-      g.drawString("Game Over", 100, 125);
+    if ( !g ) {
+      g.drawString("Game Over", width/2, height/2);
     }
   } // end paintComponent
 
