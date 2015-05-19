@@ -11,6 +11,7 @@ public class Canvas extends JPanel implements Runnable {
 
  private int height = 0;
  private int width = 0;
+ private boolean game;
  
  
   private int ballX, ballY, p1X, p1Y, p2X, p2Y;
@@ -28,7 +29,7 @@ public class Canvas extends JPanel implements Runnable {
     p2Y = height/2;
     p1X = width/40;
     p2X = (width /40)*39;
-    
+    game=true;
   }
   public int getMove(){
      return move;
@@ -42,13 +43,16 @@ public class Canvas extends JPanel implements Runnable {
    public int ballX(){
       return ballX;
   }
-  
+  public void over(){
+   game=false;
+   repaint();
+  }
   public int ballY(){
       return ballY; 
   }
   // Draw ball and ships
-  public void paintComponent(Graphics g, boolean game) {
-     if ( !g ) {
+  public void paintComponent(Graphics g) {
+     if ( !game ) {
       g.drawString("Game Over", width/2, height/2);
     }
     else{
