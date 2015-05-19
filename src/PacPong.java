@@ -37,11 +37,13 @@ class PacPong {
     boolean game = true;
     Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
     canvas.paintComponent(); // add object with type Graphics
-    int X, Y;
-    X = canvas.ballX();
-    Y = canvas.ballY();
+    int X, Y, score1, score2;
+    score1=0;
+    score2=0;
     while ( game ) {
-      int length = canvas.getLength();
+      X = canvas.ballX();
+      Y = canvas.ballY();
+      int height = canvas.getHeight();
       int width = canvas.getWidth();
       int move = canvas.getMove();
       boolean ballright, ballup;
@@ -55,23 +57,25 @@ class PacPong {
         X += move; // move not found
         if (X >= (width - 8)) { // width not found
           ballright= false;
+          score1++;
         }
       } else {
-        X += move; 
+        X -= move; 
         if ( X <= 0) {
           ballright = true;
+          score2++;
         }
       }
       // The ball moves from up to down
       if ( ballup ) {
         // go up
         Y += move; // move not found
-        if (Y >= (length - 8)) { // length not found
+        if (Y >= (height - 8)) { // height not found
           ballup= false;
         }
       } else {
         // go down
-        Y += down; // down not found
+        Y -= move; 
         if ( Y <= 0 ) {
           ballup = true;
         }
@@ -96,30 +100,15 @@ class PacPong {
       } else if ( smp2 == -1 ) {
         canvas.movePlayer2D();
       }
-      
-      /**
-       * BELOW VARS ARE MISSING
-       * width
-       * score1
-       * score2
-       * p1X
-       * p2X
-       * p2Y
-       */
-      
-      // The score of the player 1 increase
-      if (X >= (width - 8)) {
-        score1++;
-      }
-      // The score of the player 2 increase
-      if ( X == 0 ) {
-        score2++;
-      }
-      // Game over. Here you can change 10 to any value
-      // When the score reach to the value, the game will end
+
+
       if (score1 == 10 || score2 == 10 ) {
-        game = false;
+        game=false;
+        canvas.paintcomponent(game);
       }
+     int p1x, p1y, p2x, p2y;
+     p1x=canvas.getp1X();
+     p1x=canvas.getp1X();
       // The ball stroke with the player 1
       if ( X == p1X+10 && Y >= p1Y && Y <= ( p1Y+25 ) ) {
         ballright=true;
