@@ -16,7 +16,6 @@ public class Canvas extends JPanel implements Runnable {
   private int ballX, ballY, p1X, p1Y, p2X, p2Y;
     private int move;
     private int ballspeed;
-    int score1 = 0, score2 = 0;
 
   public Canvas(int x, int y) {
     height = x;
@@ -47,14 +46,12 @@ public class Canvas extends JPanel implements Runnable {
   public int ballY(){
       return ballY; 
   }
-  public void setScore1(int s){
-   score1=s;
-  }
-  public void setScore2(int s){
-   score2=s;
-  }
   // Draw ball and ships
-  public void paintComponent(Graphics g, boolean g) {
+  public void paintComponent(Graphics g, boolean game) {
+     if ( !g ) {
+      g.drawString("Game Over", width/2, height/2);
+    }
+    else{
     setOpaque(true);
     super.paintComponent(g);
     
@@ -69,10 +66,8 @@ public class Canvas extends JPanel implements Runnable {
     //Draw scores and calculate for X locations
     g.drawString("" + score1, width/4, 100);
     g.drawString("" + score2, (width/4)*3, 100);
+}
 
-    if ( !g ) {
-      g.drawString("Game Over", width/2, height/2);
-    }
   } // end paintComponent
 
   // Positions on X and Y for the ball
