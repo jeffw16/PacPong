@@ -44,13 +44,13 @@ boolean game = true;
 boolean ballright, ballup;
 Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
 Run l= new Run(canvas);
-int pLength = getPLength();
-int girth = getGirth();
+int pLength = canvas.getPLength();
+int girth = canvas.getGirth();
 l.setVisible(true);
 int X, Y;
 score1=0;
 score2=0;
-if (Math.random()>.5) {
+if (Math.random()>0.5) {
 ballright=true;
 ballup=true;
 } else {
@@ -152,4 +152,3 @@ Thread.sleep(17);
 }
 }
 }
-
