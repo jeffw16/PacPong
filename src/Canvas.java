@@ -34,6 +34,12 @@ game=true;
 score1=0;
 score2=0;
 }
+public int getPLength(){
+	return pLength;
+}
+public int getGirth(){
+	return girth;
+}
 public int getSpeed(){
 	return ballspeed;
 }
