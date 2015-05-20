@@ -12,7 +12,7 @@ public class Canvas extends JPanel {
 private int height = 0;
 private int width = 0;
 private boolean game=true;
-private int ballX, ballY, p1X, p1Y, p2X, p2Y;
+private int ballX, ballY, p1X, p1Y, p2X, p2Y, girth, pLength;
 private int move;
 private int ballspeed;
 private int score1,score2;
@@ -28,6 +28,8 @@ p1Y = height/2;
 p2Y = height/2;
 p1X = width/40;
 p2X = (width /40)*38;
+pLength=height/6;
+girth=width/120;
 game=true;
 score1=0;
 score2=0;
@@ -73,7 +75,7 @@ super.paintComponent(g);
 g.setColor(Color.black);
 g.fillRect(0, 0, width, height);
 g.setColor(Color.WHITE);
-g.fillRect(ballX, ballY, width/192, height/108 );
+g.fillRect(ballX, ballY, width/165, height/95 );
 // Draw paddles
 g.fillRect(p1X, p1Y, 10, 25);
 g.fillRect(p2X, p2Y, 10, 25);
