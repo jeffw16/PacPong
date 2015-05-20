@@ -13,16 +13,10 @@ public class AudioPlayer {
 	
 		 void playSound(){
 			
-			  URL url = AudioPlayer.class.getResource("/Sound/src/Windows Logon Sound.wav");
+			URL url = AudioPlayer.class.getResource("/Sound/src/Windows Logon Sound.wav");
 		  	sound = Applet.newAudioClip(url);
 		  	sound.play();
 			
 		}
-	
-	public static void main(String[] args){
-		
-		new AudioPlayer().playSound();
-		
-	}
 
 }
