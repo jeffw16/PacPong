@@ -1,0 +1,21 @@
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+
+import javax.swing.JFrame;
+
+
+public class Run extends JFrame{
+	
+	public Run(Canvas c){
+	super();
+	initialize(c);
+	}
+	public void initialize(Canvas can) {
+		this.setResizable(false);
+		this.setBounds(new Rectangle(0, 0, can.getWidth(), can.getHeight())); // Position on the desktop
+		this.setContentPane(can);
+		this.setTitle("PacPong");
+		}
+
+}
