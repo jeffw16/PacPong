@@ -12,11 +12,13 @@ public class AudioPlayer {
 	 AudioClip sound;
 	
 		 void playSound(){
-			
-			URL url = AudioPlayer.class.getResource("/Sound/src/Windows Logon Sound.wav");
-		  	sound = Applet.newAudioClip(url);
-		  	sound.play();
-			
+			try {
+				URL url = AudioPlayer.class.getResource("/Sound/src/Windows Logon Sound.wav");
+			  	sound = Applet.newAudioClip(url);
+			  	sound.play();
+			} catch ( Exception e ) {
+				
+			}
 		}
 
 }
