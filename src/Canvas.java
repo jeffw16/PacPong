@@ -4,10 +4,7 @@
 */
 import java.awt.*;
 import java.awt.event.KeyEvent;
-
 import javax.swing.*;
-
-
 public class Canvas extends JPanel {
 private int height = 0;
 private int width = 0;
@@ -16,8 +13,7 @@ private int ballX, ballY, p1X, p1Y, p2X, p2Y, girth, pLength;
 private int move;
 private int ballspeed;
 private int score1,score2;
-
-public Canvas(int x, int y) {	
+public Canvas(int x, int y) {
 height = y;
 width = x;
 move = height/60;
@@ -35,25 +31,25 @@ score1=0;
 score2=0;
 }
 public int getPLength(){
-	return pLength;
+return pLength;
 }
 public int getGirth(){
-	return girth;
+return girth;
 }
 public int getSpeed(){
-	return ballspeed;
+return ballspeed;
 }
 public void setSpeed(int s){
-	ballspeed=s;
+ballspeed=s;
 }
 public void run(){
-	repaint();
+repaint();
 }
 public void setScore1(int s){
-	score1=s;
+score1=s;
 }
 public void setScore2(int s){
-	score2=s;
+score2=s;
 }
 public int getMove(){
 return move;
@@ -76,11 +72,16 @@ return ballY;
 }
 // Draw ball and ships
 public void paintComponent(Graphics g) {
-setOpaque(true);	
+setOpaque(true);
 super.paintComponent(g);
 g.setColor(Color.black);
 g.fillRect(0, 0, width, height);
 g.setColor(Color.WHITE);
+int boun = height/30;
+int leng = boun/2;
+for(int i=0; i<31; i++){
+	g.fillRect(width/2, boun*i, width/1000, leng);
+}
 g.fillRect(ballX, ballY, width/165, height/95 );
 // Draw paddles
 g.fillRect(p1X, p1Y, girth, pLength);
@@ -100,7 +101,7 @@ ballY = ny;
 repaint();
 } // end moveBall
 public void movePlayer1UP(){
-if(p1Y>move){	
+if(p1Y>move){
 p1Y-=move;
 }
 repaint();
@@ -113,13 +114,13 @@ p2Y-=move;
 repaint();
 }
 public void movePlayer1D(){
-if(p1Y<(height-25)){
+if(p1Y<(height-(pLength*3)/2)){
 p1Y+=move;
 }
 repaint();
 }
 public void movePlayer2D(){
-if(p2Y<(height-25)){
+if(p2Y<(height-(pLength*3)/2)){
 p2Y+=move;
 }
 repaint();
