@@ -30,18 +30,21 @@ screenSizeY = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaxi
 //} else {
 // add failsafe later here
 }
-Listener l = new Listener();
-PacPong ppgame = new PacPong ( l, screenSizeX, screenSizeY );
+PacPong ppgame = new PacPong (screenSizeX, screenSizeY );
 }
-public PacPong( Listener l, int screenSizeX, int screenSizeY ) {
-run(l, screenSizeX, screenSizeY);
+public PacPong( int screenSizeX, int screenSizeY ) {
+try {
+	run(screenSizeX, screenSizeY);
+} catch (InterruptedException e) {
+	e.printStackTrace();
 }
-public void run(Listener l, int screenSizeX, int screenSizeY) {
+}
+public void run(int screenSizeX, int screenSizeY) throws InterruptedException {
 boolean game = true;
 boolean ballright, ballup;
 Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
-Run frame= new Run(canvas);
-frame.setVisible(true);
+Run l= new Run(canvas);
+l.setVisible(true);
 int X, Y;
 score1=0;
 score2=0;
@@ -143,6 +146,8 @@ count++;
 if(count%150==0){
 	canvas.setSpeed(speed++);
 }
+Thread.sleep(17);
 }
 }
 }
+
