@@ -4,6 +4,7 @@
 */
 import java.awt.*;
 import java.awt.event.KeyEvent;
+
 import javax.swing.*;
 
 
@@ -17,16 +18,16 @@ private int ballspeed;
 private int score1,score2;
 
 public Canvas(int x, int y) {	
-height = x;
-width = y;
-move = height/45;
-ballspeed = width/60;
+height = y;
+width = x;
+move = height/60;
+ballspeed = width/300;
 ballX = width/2;
 ballY = height/2;
 p1Y = height/2;
 p2Y = height/2;
 p1X = width/40;
-p2X = (width /40)*39;
+p2X = (width /40)*38;
 game=true;
 score1=0;
 score2=0;
@@ -67,11 +68,12 @@ return ballY;
 }
 // Draw ball and ships
 public void paintComponent(Graphics g) {
-setOpaque(true);
+setOpaque(true);	
 super.paintComponent(g);
-// Draw ball
+g.setColor(Color.black);
+g.fillRect(0, 0, width, height);
 g.setColor(Color.WHITE);
-g.fillRect(ballX, ballY, ballX-(width/192), ballY-(height/108) );
+g.fillRect(ballX, ballY, width/192, height/108 );
 // Draw paddles
 g.fillRect(p1X, p1Y, 10, 25);
 g.fillRect(p2X, p2Y, 10, 25);
@@ -90,20 +92,28 @@ ballY = ny;
 repaint();
 } // end moveBall
 public void movePlayer1UP(){
-p1Y+=move;
+if(p1Y>move){	
+p1Y-=move;
+}
 repaint();
 }
 // Position on Y for the player 2
 public void movePlayer2UP(){
-p2Y+=move;
+if(p2Y>move){
+p2Y-=move;
+}
 repaint();
 }
 public void movePlayer1D(){
-p1Y-=move;
+if(p1Y<(height-25)){
+p1Y+=move;
+}
 repaint();
 }
 public void movePlayer2D(){
-p1Y-=move;
+if(p2Y<(height-25)){
+p2Y+=move;
+}
 repaint();
 }
 public int getp1X () {
