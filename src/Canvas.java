@@ -77,8 +77,8 @@ g.fillRect(0, 0, width, height);
 g.setColor(Color.WHITE);
 g.fillRect(ballX, ballY, width/165, height/95 );
 // Draw paddles
-g.fillRect(p1X, p1Y, 10, 25);
-g.fillRect(p2X, p2Y, 10, 25);
+g.fillRect(p1X, p1Y, girth, pLength);
+g.fillRect(p2X, p2Y, girth, pLength);
 //Draw scores and calculate for X locations
 g.drawString("" + score1, width/4, 100);
 g.drawString("" + score2, (width/4)*3, 100);
