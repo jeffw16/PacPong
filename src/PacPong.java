@@ -6,9 +6,8 @@ import java.util.Scanner;
 class PacPong {
 private int score1=0;
 private int score2=0;
-	
 public static void main ( String[] args ) {
-Scanner chooseScreenSize = new Scanner ( System.in );
+/**Scanner chooseScreenSize = new Scanner ( System.in );
 System.out.println ( "Screen size? 1 = 800x600, 2 = 1600x900, 3 = fullscreen: " );
 int screenSizeSelection;
 try {
@@ -16,27 +15,27 @@ screenSizeSelection = chooseScreenSize.nextInt();
 } catch ( Exception e ) {
 System.out.println ( "Invalid input; we will default your selection to 800x600." );
 screenSizeSelection = 1;
-}
+}*/
 int screenSizeX, screenSizeY;
-if ( screenSizeSelection == 1 ) {
+/**if ( screenSizeSelection == 1 ) {
 screenSizeX = 800;
 screenSizeY = 600;
 } else if ( screenSizeSelection == 2 ) {
 screenSizeX = 1600;
 screenSizeY = 900;
 } else { // if ( screenSizeSelection == 3 ) {
-screenSizeX = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
+*/screenSizeX = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
 screenSizeY = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
 //} else {
 // add failsafe later here
-}
+//}
 PacPong ppgame = new PacPong (screenSizeX, screenSizeY );
 }
 public PacPong( int screenSizeX, int screenSizeY ) {
 try {
-	run(screenSizeX, screenSizeY);
+run(screenSizeX, screenSizeY);
 } catch (InterruptedException e) {
-	e.printStackTrace();
+e.printStackTrace();
 }
 }
 public void run(int screenSizeX, int screenSizeY) throws InterruptedException {
@@ -50,7 +49,7 @@ l.setVisible(true);
 int X, Y;
 score1=0;
 score2=0;
-if (Math.random()>0.5) {
+if (Math.random()>.5) {
 ballright=true;
 ballup=true;
 } else {
@@ -60,7 +59,7 @@ canvas.run();
 }
 int count=0;
 while ( game ) {
-int speed = canvas.getSpeed();	
+int speed = canvas.getSpeed();
 X = canvas.ballX();
 Y = canvas.ballY();
 int height = canvas.getHeight();
@@ -84,7 +83,7 @@ score2++;
 if ( ballup ) {
 // go up
 Y += speed; // move not found
-if (Y >= (height - 8)) { // height not found
+if (Y >= (height - (pLength/2))) { // height not found
 ballup= false;
 }
 } else {
@@ -123,30 +122,30 @@ p2X=canvas.getp2X();
 p1Y=canvas.getp1Y();
 p2Y=canvas.getp2Y();
 // The ball stroke with the player 1
-if ( X == p1X+girth && Y >= p1Y && Y <= ( p1Y+pLength ) ) {
+if (X == p1X+(girth/2) && Y >= p1Y && Y <= ( p1Y+pLength ) ) {
 ballright=true;
 if(smp1==1){
-ballup = true;
+ballup = false;
 }
 if(smp1==-1){
-ballup=false;
+ballup=true;
 }
 }
 // The ball stroke with the player 2
-if( X ==(p2X-(girth/2)) && Y >= p2Y && Y <= (p2Y+pLength)) {
+if( X == (p2X-(girth/2)) && Y >= p2Y && Y <= (p2Y+pLength)) {
 ballright=false;
 if(smp2==1){
-ballup=true;
+ballup=false;
 }
 if(smp2==-1){
-ballup=false;
+ballup=true;
 }
 }
 canvas.setScore1(score1);
 canvas.setScore2(score2);
 count++;
-if(count%150==0){
-	canvas.setSpeed(speed++);
+if(count%15==0){
+canvas.setSpeed(speed++);
 }
 Thread.sleep(17);
 }
