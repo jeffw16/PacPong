@@ -125,6 +125,9 @@ p2Y+=move;
 }
 repaint();
 }
+public void movePlayer3UP () {
+	// idk what to do here
+}
 public int getp1X () {
 return p1X;
 }
