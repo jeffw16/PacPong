@@ -101,6 +101,7 @@ playgame(l, canvas);
 }
 public void playgame(Run l, Canvas canvas) {
 	
+Sound s = new Sound();
 boolean ballright, ballup;
 l.setUndecorated(true);
 l.setAlwaysOnTop(true);
@@ -132,12 +133,14 @@ if ( ballright ) {
 X += speed; // move not found
 if (X >= width ) { // width not found
 ballright= false;
+s.scoreChange();
 score1++;
 }
 } else {
 X -= speed;
 if ( X <= 0) {
 ballright = true;
+s.scoreChange();
 score2++;
 }
 }
@@ -146,12 +149,14 @@ if ( ballup ) {
 // go up
 Y += speed; // move not found
 if (Y >= (height - (height/95))) { // height not found
-ballup= false;
+	s.wallHit();
+	ballup= false;
 }
 } else {
 // go down
 Y -= speed;
 if ( Y <= 0 ) {
+s.wallHit();
 ballup = true;
 }
 }
@@ -185,6 +190,7 @@ p1Y=canvas.getp1Y();
 p2Y=canvas.getp2Y();
 // The ball stroke with the player 1
 if (X > p1X-(girth/2)&& X < p1X+(girth/2) && Y >= p1Y && Y <= ( p1Y+pLength ) ) {
+s.paddleHit();
 ballright=true;
 if(smp1==1){
 ballup = false;
@@ -194,7 +200,8 @@ ballup=true;
 }
 }
 // The ball stroke with the player 2
-if(X > p2X-(girth/2)&& X < p2X+(girth/2) && Y >= p2Y && Y <= (p2Y+pLength)) {
+if(X > p2X-(girth/2)&& X < p2X+(girth/2) && Y >= p2Y && Y <= (p2Y+pLength)) {	
+s.paddleHit();
 ballright=false;
 if(smp2==1){
 ballup=false;
@@ -210,7 +217,7 @@ if(count%4==0){
 canvas.setSpeed(speed++);
 }
 try {
-	Thread.sleep(17);
+	Thread.sleep(15);
 		while(!l.shouldRun()){
 			Thread.sleep(60);
 		}
