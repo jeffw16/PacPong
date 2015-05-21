@@ -97,6 +97,10 @@ Thread.sleep(15);
 pause=!starter.shouldStart();
 }
 starter.setVisible(false);
+playgame(l, canvas);
+}
+public void playgame(Run l, Canvas canvas) {
+	
 boolean ballright, ballup;
 l.setUndecorated(true);
 l.setAlwaysOnTop(true);
@@ -170,7 +174,7 @@ canvas.movePlayer2UP();
 } else if ( smp2 == -1 ) {
 canvas.movePlayer2D();
 }
-if (score1 == 10 || score2 == 10 ) {
+if (score1 == 9 || score2 == 9 ) {
 game=false;
 canvas.over();
 }
@@ -205,7 +209,15 @@ count++;
 if(count%4==0){
 canvas.setSpeed(speed++);
 }
-Thread.sleep(17);
+try {
+	Thread.sleep(17);
+		while(!l.shouldRun()){
+			Thread.sleep(60);
+		}
+} catch (InterruptedException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
 }
 }
 }
