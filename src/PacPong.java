@@ -41,6 +41,7 @@ e.printStackTrace();
 }
 }
 public void run(int screenSizeX, int screenSizeY) throws InterruptedException {
+
 boolean game = true;
 boolean ballright, ballup;
 Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
@@ -73,7 +74,7 @@ int move = canvas.getMove();
 // The ball move from left to right
 if ( ballright ) {
 X += speed; // move not found
-if (X >= (width - 8)) { // width not found
+if+ (X >= (width - 8)) { // width not found
 ballright= false;
 score1++;
 }
@@ -149,7 +150,7 @@ ballup=true;
 canvas.setScore1(score1);
 canvas.setScore2(score2);
 count++;
-if(count%15==0){
+if(count%4==0){
 canvas.setSpeed(speed++);
 }
 Thread.sleep(17);
