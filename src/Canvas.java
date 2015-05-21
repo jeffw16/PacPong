@@ -32,7 +32,7 @@ p1Y = height/2;
 p2Y = height/2;
 p1X = width/40;
 p2X = (width /40)*38;
-pLength=height/6;
+pLength=height/10;
 girth=width/120;
 game=true;
 score1=0;
@@ -264,6 +264,9 @@ g.drawImage(p2score, (width/4)*3, height/10, null);
 if ( !game ) {
 g.drawString("Game Over", width/2, height/2);
 }
+}
+public boolean getGame(){
+	return game;
 }
 // end paintComponent
 // Positions on X and Y for the ball
