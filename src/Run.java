@@ -57,6 +57,9 @@ public class Run extends JFrame{
 	// start mouse listener here
 	
 	// end mouse listener here
+	public boolean shouldStart() {
+		return gameTime;
+	}
 	public int shouldMovePlayer1 (int p1Y, int height) {
 		if (player1Up == true && p1Y >= 0) {
 		return 1;
