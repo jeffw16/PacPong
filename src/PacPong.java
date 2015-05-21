@@ -99,7 +99,9 @@ pause=!starter.shouldStart();
 starter.setVisible(false);
 playgame(l, canvas);
 }
-public void playgame(Run l, Canvas canvas) {
+								public void playgame(Run l, Canvas canvas) {
+									
+									
 	
 Sound s = new Sound();
 boolean ballright, ballup;
@@ -121,7 +123,9 @@ ballright=false;
 ballup=false;
 }
 int count=0;
-while ( game ) {
+int speed1 = canvas.getSpeed();
+									while ( game ) {
+																				
 int speed = canvas.getSpeed();
 X = canvas.ballX();
 Y = canvas.ballY();
@@ -134,6 +138,12 @@ X += speed; // move not found
 if (X >= width ) { // width not found
 ballright= false;
 s.scoreChange();
+if(Math.random()>0.5){
+	speed1+=(int)(Math.random()*1);
+	}
+	else{
+	speed1-=(int)(Math.random()*1);	
+	}
 score1++;
 }
 } else {
@@ -141,22 +151,40 @@ X -= speed;
 if ( X <= 0) {
 ballright = true;
 s.scoreChange();
+if(Math.random()>0.5){
+	speed1+=(int)(Math.random()*1);
+	}
+	else{
+	speed1-=(int)(Math.random()*1);	
+	}
 score2++;
 }
 }
 // The ball moves from up to down
 if ( ballup ) {
 // go up
-Y += speed; // move not found
+Y += speed1; // move not found
 if (Y >= (height - (height/95))) { // height not found
 	s.wallHit();
+	if(Math.random()>0.5){
+		speed1+=(int)(Math.random()*1);
+		}
+		else{
+		speed1-=(int)(Math.random()*1);	
+		}
 	ballup= false;
 }
 } else {
 // go down
-Y -= speed;
+Y -= speed1;
 if ( Y <= 0 ) {
 s.wallHit();
+if(Math.random()>0.5){
+	speed1+=(int)(Math.random()*1);
+	}
+	else{
+	speed1-=(int)(Math.random()*1);	
+	}
 ballup = true;
 }
 }
@@ -190,6 +218,12 @@ p1Y=canvas.getp1Y();
 p2Y=canvas.getp2Y();
 // The ball stroke with the player 1
 if (X > p1X-(girth/2)&& X < p1X+(girth/2) && Y >= p1Y && Y <= ( p1Y+pLength ) ) {
+	if(Math.random()>0.5){
+		speed1+=(int)(Math.random()*1);
+		}
+		else{
+		speed1-=(int)(Math.random()*1);	
+		}
 s.paddleHit();
 ballright=true;
 if(smp1==1){
@@ -200,7 +234,13 @@ ballup=true;
 }
 }
 // The ball stroke with the player 2
-if(X > p2X-(girth/2)&& X < p2X+(girth/2) && Y >= p2Y && Y <= (p2Y+pLength)) {	
+if(X > p2X-(girth/2)&& X < p2X+(girth/2) && Y >= p2Y && Y <= (p2Y+pLength)) {
+	if(Math.random()>0.5){
+		speed1+=(int)(Math.random()*1);
+		}
+		else{
+		speed1-=(int)(Math.random()*1);	
+		}		
 s.paddleHit();
 ballright=false;
 if(smp2==1){
