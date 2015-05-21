@@ -6,10 +6,12 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 public class Run extends JFrame{
-private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right, gameTime;
+private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right, gameTime, playTime;
 public Run(Canvas c){
 super();
 initialize(c);
+gameTime=false;
+playTime=true;
 this.addKeyListener(new KeyAdapter() {
 public void keyPressed(KeyEvent e) {
 switch(e.getKeyCode()) {
@@ -21,7 +23,11 @@ case KeyEvent.VK_S :
 player1Down = true;
 break;
 case KeyEvent.VK_F :
-gameTime = true;
+gameTime = !gameTime;
+break;
+case KeyEvent.VK_P :
+playTime = !playTime;
+break;
 // Move p2
 case KeyEvent.VK_UP:
 player2Up=true;
@@ -55,6 +61,9 @@ break;
 // end mouse listener here
 public boolean shouldStart() {
 return gameTime;
+}
+public boolean shouldRun() {
+return playTime;
 }
 public int shouldMovePlayer1 (int p1Y, int height, int pLength) {
 if (player1Up == true && p1Y >= 0) {
