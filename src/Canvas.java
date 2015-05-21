@@ -101,7 +101,7 @@ if(score1 == 0){
 	try {
 		p1score = ImageIO.read(oneScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score1 == 1){
@@ -109,7 +109,7 @@ if(score1 == 1){
 	try {
 		p1score = ImageIO.read(oneScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score1 == 2){
@@ -117,7 +117,7 @@ if(score1 == 2){
 	try {
 		p1score = ImageIO.read(oneScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score1 == 3){
@@ -125,7 +125,7 @@ if(score1 == 3){
 	try {
 		p1score = ImageIO.read(oneScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score1 == 4){
@@ -133,7 +133,7 @@ if(score1 == 4){
 	try {
 		p1score = ImageIO.read(oneScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score1 == 5){
@@ -141,7 +141,7 @@ if(score1 == 5){
 	try {
 		p1score = ImageIO.read(oneScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score1 == 6){
@@ -149,7 +149,7 @@ if(score1 == 6){
 	try {
 		p1score = ImageIO.read(oneScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score1 == 7){
@@ -157,7 +157,7 @@ if(score1 == 7){
 	try {
 		p1score = ImageIO.read(oneScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score1 == 8){
@@ -165,7 +165,7 @@ if(score1 == 8){
 	try {
 		p1score = ImageIO.read(oneScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score1 == 9){
@@ -173,7 +173,7 @@ if(score1 == 9){
 	try {
 		p1score = ImageIO.read(oneScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score2 == 0){
@@ -181,7 +181,7 @@ if(score2 == 0){
 	try {
 		p2score = ImageIO.read(twoScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score2 == 1){
@@ -189,7 +189,7 @@ if(score2 == 1){
 	try {
 		p2score = ImageIO.read(twoScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score2 == 2){
@@ -197,7 +197,7 @@ if(score2 == 2){
 	try {
 		p2score = ImageIO.read(twoScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score2 == 3){
@@ -205,7 +205,7 @@ if(score2 == 3){
 	try {
 		p2score = ImageIO.read(twoScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score2 == 4){
@@ -213,7 +213,7 @@ if(score2 == 4){
 	try {
 		p2score = ImageIO.read(twoScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score2 == 5){
@@ -221,7 +221,7 @@ if(score2 == 5){
 	try {
 		p2score = ImageIO.read(twoScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score2 == 6){
@@ -229,7 +229,7 @@ if(score2 == 6){
 	try {
 		p2score = ImageIO.read(twoScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score2 == 7){
@@ -237,7 +237,7 @@ if(score2 == 7){
 	try {
 		p2score = ImageIO.read(twoScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score2 == 8){
@@ -245,7 +245,7 @@ if(score2 == 8){
 	try {
 		p2score = ImageIO.read(twoScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 if(score2 == 9){
@@ -253,7 +253,7 @@ if(score2 == 9){
 	try {
 		p2score = ImageIO.read(twoScore);
 	} catch (IOException e) {
-		System.out.println("Could not find image");
+		System.err.println("Could not find image");
 	}
 }
 
@@ -273,26 +273,26 @@ ballY = ny;
 repaint();
 } // end moveBall
 public void movePlayer1UP(){
-if(p1Y>move){
+if(p1Y>0){
 p1Y-=move;
 }
 repaint();
 }
 // Position on Y for the player 2
 public void movePlayer2UP(){
-if(p2Y>move){
+if(p2Y>0){
 p2Y-=move;
 }
 repaint();
 }
 public void movePlayer1D(){
-if(p1Y<(height-(pLength*3)/2)){
+if(p1Y<(height-pLength)){
 p1Y+=move;
 }
 repaint();
 }
 public void movePlayer2D(){
-if(p2Y<(height-(pLength*3)/2)){
+if(p2Y<(height-pLength)){
 p2Y+=move;
 }
 repaint();
