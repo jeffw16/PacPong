@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -57,11 +56,11 @@ break;
 public boolean shouldStart() {
 return gameTime;
 }
-public int shouldMovePlayer1 (int p1Y, int height) {
+public int shouldMovePlayer1 (int p1Y, int height, int pLength) {
 if (player1Up == true && p1Y >= 0) {
 return 1;
 }
-if (player1Down == true && p1Y <= (height-25)) {
+if (player1Down == true && p1Y <= (height)) {
 return -1;
 }
 else{
@@ -69,11 +68,11 @@ return 0;
 }
 } // end shouldMovePlayer1
 // Move player 2
-public int shouldMovePlayer2(int p2Y, int height) {
+public int shouldMovePlayer2(int p2Y, int height, int pLength) {
 if (player2Up == true && p2Y >= 0) {
 return 1;
 }
-if (player2Down == true && p2Y <= (height-25)) {
+if (player2Down == true && p2Y <= (height)) {
 return -1;
 }
 else{
