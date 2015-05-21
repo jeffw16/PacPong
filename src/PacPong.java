@@ -41,8 +41,56 @@ e.printStackTrace();
 }
 }
 public void run(int screenSizeX, int screenSizeY) throws InterruptedException {
-
-boolean game = true;
+while(!l.shouldStart()){
+boolean sballright, sballup;  
+Canvas start = new Canvas (screenSizeX, screenSizeY); 
+Run starter = new Run(start);
+starter.setUndecorated(true);
+starter.setAlwaysOnTop(true);
+starter.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+starter.setVisible(true);
+if (Math.random()>.5) {
+sballright=true;
+sballup=true;
+} else {
+sballright=false;
+sballup=false;
+}
+int sspeed = start.getSpeed();
+sX = start.ballX();
+sY = start.ballY();
+int sheight = start.getHeight();
+int swidth = start.getWidth();
+int smove = start.getMove();
+// The ball move from left to right
+if ( sballright ) {
+sX += sspeed; // move not found
+if+ (sX >= (width) { // width not found
+sballright= false;
+}
+} else {
+sX -= speed;
+if ( sX <= 0) {
+sballright = true;
+}
+}
+// The ball moves from up to down
+if ( sballup ) {
+// go up
+sY += speed; // move not found
+if (sY >= (height) { // height not found
+sballup= false;
+}
+} else {
+// go down
+sY -= speed;
+if ( sY <= 0 ) {
+sballup = true;
+}
+}
+start.moveBall(X, Y);
+}
+starter.setVisible(false);
 boolean ballright, ballup;
 Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
 Run l= new Run(canvas);
@@ -52,6 +100,7 @@ l.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 int pLength = canvas.getPLength();
 int girth = canvas.getGirth();
 l.setVisible(true);
+boolean game = true;
 int X, Y;
 score1=0;
 score2=0;
@@ -61,7 +110,6 @@ ballup=true;
 } else {
 ballright=false;
 ballup=false;
-canvas.run();
 }
 int count=0;
 while ( game ) {
