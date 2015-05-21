@@ -9,21 +9,23 @@ import javax.swing.JFrame;
 
 
 public class Run extends JFrame{
-	private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right;
+	private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right, gameTime;
 	public Run(Canvas c){
 	super();
 	initialize(c);
 	 this.addKeyListener(new KeyAdapter() {
 		 public void keyPressed(KeyEvent e) {
 			 switch(e.getKeyCode()) {
-			 // Move ship 1
+			 // Move p1
 			 case KeyEvent.VK_W :
 			 player1Up = true;
 			 break;
 			 case KeyEvent.VK_S :
 			 player1Down = true;
 			 break;
-			 // Move ship 2
+			 case KeyEvent.VK_F :
+			 gameTime = true;	
+			 // Move p2
 			 case KeyEvent.VK_UP:
 			 player2Up=true;
 			 break;
