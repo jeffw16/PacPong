@@ -122,7 +122,7 @@ p2X=canvas.getp2X();
 p1Y=canvas.getp1Y();
 p2Y=canvas.getp2Y();
 // The ball stroke with the player 1
-if (X == p1X+(girth/2) && Y >= p1Y && Y <= ( p1Y+pLength ) ) {
+if (X > p1X-(girth/2)&& X < p1X+(girth/2) && Y >= p1Y && Y <= ( p1Y+pLength ) ) {
 ballright=true;
 if(smp1==1){
 ballup = false;
@@ -132,7 +132,7 @@ ballup=true;
 }
 }
 // The ball stroke with the player 2
-if( X == (p2X-(girth/2)) && Y >= p2Y && Y <= (p2Y+pLength)) {
+if(X > p2X-(girth/2)&& X < p2X+(girth/2) && Y >= p2Y && Y <= (p2Y+pLength)) {
 ballright=false;
 if(smp2==1){
 ballup=false;
