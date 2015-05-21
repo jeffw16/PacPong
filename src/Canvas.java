@@ -1,315 +1,270 @@
 /**
 * PacPong
-* Canvas
+* Runner
 */
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.IOException;
+import java.util.Scanner;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-public class Canvas extends JPanel {
-private int height = 0;
-private int width = 0;
-private boolean game=true;
-private int ballX, ballY, p1X, p1Y, p2X, p2Y, girth, pLength;
-private int move;
-private int ballspeed;
-private int score1,score2;
-File oneScore = new File("src/finish images/0.png");
-Image p1score = null;
-File twoScore = new File("src/finish images/0.png");
-Image p2score = null;
-public Canvas(int x, int y) {
-height = y;
-width = x;
-move = height/70;
-ballspeed = width/230;
-ballX = width/2;
-ballY = height/2;
-p1Y = height/2;
-p2Y = height/2;
-p1X = width/40;
-p2X = (width /40)*38;
-pLength=height/10;
-girth=width/120;
-game=true;
+import javax.swing.JFrame;
+class PacPong {
+private int score1=0;
+private int score2=0;
+public static void main ( String[] args ) {
+/**Scanner chooseScreenSize = new Scanner ( System.in );
+System.out.println ( "Screen size? 1 = 800x600, 2 = 1600x900, 3 = fullscreen: " );
+int screenSizeSelection;
+try {
+screenSizeSelection = chooseScreenSize.nextInt();
+} catch ( Exception e ) {
+System.out.println ( "Invalid input; we will default your selection to 800x600." );
+screenSizeSelection = 1;
+}*/
+int screenSizeX, screenSizeY;
+/**if ( screenSizeSelection == 1 ) {
+screenSizeX = 800;
+screenSizeY = 600;
+} else if ( screenSizeSelection == 2 ) {
+screenSizeX = 1600;
+screenSizeY = 900;
+} else { // if ( screenSizeSelection == 3 ) {
+*/screenSizeX = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
+screenSizeY = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
+//} else {
+// add failsafe later here
+//}
+PacPong ppgame = new PacPong (screenSizeX, screenSizeY );
+}
+public PacPong( int screenSizeX, int screenSizeY ) {
+try {
+run(screenSizeX, screenSizeY);
+} catch (InterruptedException e) {
+e.printStackTrace();
+}
+}
+public void run(int screenSizeX, int screenSizeY) throws InterruptedException {
+	Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
+	Run l= new Run(canvas);
+	
+boolean sballright, sballup;  
+Canvas start = new Canvas (screenSizeX, screenSizeY); 
+Run starter = new Run(start);
+starter.setUndecorated(true);
+starter.setAlwaysOnTop(true);
+starter.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+starter.setVisible(true);
+if (Math.random()>.5) {
+sballright=true;
+sballup=true;
+} else {
+sballright=false;
+sballup=false;
+}
+int sspeed = start.getSpeed();
+int sX = start.ballX();
+int sY = start.ballY();
+int sheight = start.getHeight();
+int swidth = start.getWidth();
+int smove = start.getMove();
+boolean pause=true;
+while(pause){
+// The ball move from left to right
+if ( sballright ) {
+sX += sspeed; // move not found
+if (sX >= (swidth)){ // width not found
+sballright= false;
+}
+} else {
+sX -= sspeed;
+if ( sX <= 0) {
+sballright = true;
+}
+}
+// The ball moves from up to down
+if ( sballup ) {
+// go up
+sY += sspeed; // move not found
+if (sY >= (sheight)) { // height not found
+sballup= false;
+}
+} else {
+// go down
+sY -= sspeed;
+if ( sY <= 0 ) {
+sballup = true;
+}
+}
+start.moveBall(sX, sY);
+Thread.sleep(15);
+pause=!starter.shouldStart();
+}
+starter.setVisible(false);
+playgame(l, canvas);
+}
+								public void playgame(Run l, Canvas canvas) {
+									
+									
+	
+Sound s = new Sound();
+boolean ballright, ballup;
+l.setUndecorated(true);
+l.setAlwaysOnTop(true);
+l.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+int pLength = canvas.getPLength();
+int girth = canvas.getGirth();
+l.setVisible(true);
+boolean game = true;
+int X, Y;
 score1=0;
 score2=0;
+if (Math.random()>.5) {
+ballright=true;
+ballup=true;
+} else {
+ballright=false;
+ballup=false;
 }
-public int getPLength(){
-return pLength;
+int count=0;
+int speed1 = canvas.getSpeed();
+									while ( game ) {
+																				
+int speed = canvas.getSpeed();
+X = canvas.ballX();
+Y = canvas.ballY();
+int height = canvas.getHeight();
+int width = canvas.getWidth();
+int move = canvas.getMove();
+// The ball move from left to right
+if ( ballright ) {
+X += speed; // move not found
+if (X >= width ) { // width not found
+ballright= false;
+s.scoreChange();
+if(Math.random()>0.5){
+	speed1+=(int)(Math.random()*1);
+	}
+	else{
+	speed1-=(int)(Math.random()*1);	
+	}
+score1++;
 }
-public int getGirth(){
-return girth;
+} else {
+X -= speed;
+if ( X <= 0) {
+ballright = true;
+s.scoreChange();
+if(Math.random()>0.5){
+	speed1+=(int)(Math.random()*1);
+	}
+	else{
+	speed1-=(int)(Math.random()*1);	
+	}
+score2++;
 }
-public int getSpeed(){
-return ballspeed;
 }
-public void setSpeed(int s){
-ballspeed=s;
+// The ball moves from up to down
+if ( ballup ) {
+// go up
+Y += speed1; // move not found
+if (Y >= (height - (height/95))) { // height not found
+	s.wallHit();
+	if(Math.random()>0.5){
+		speed1+=(int)(Math.random()*1);
+		}
+		else{
+		speed1-=(int)(Math.random()*1);	
+		}
+	ballup= false;
 }
-public void run(){
-repaint();
+} else {
+// go down
+Y -= speed1;
+if ( Y <= 0 ) {
+s.wallHit();
+if(Math.random()>0.5){
+	speed1+=(int)(Math.random()*1);
+	}
+	else{
+	speed1-=(int)(Math.random()*1);	
+	}
+ballup = true;
 }
-public void setScore1(int s){
-score1=s;
 }
-public void setScore2(int s){
-score2=s;
+canvas.moveBall(X, Y);
+// Move player 1
+int smp1 = l.shouldMovePlayer1(canvas.getp1Y(),canvas.getHeight(), canvas.getPLength());
+// Move player 2
+int smp2 = l.shouldMovePlayer2(canvas.getp2Y(),canvas.getHeight(), canvas.getPLength());
+if ( smp1 == 1) {
+canvas.movePlayer1UP();
+} else if ( smp1 == 0 ) {
+// do nothing
+} else if ( smp1 == -1 ) {
+canvas.movePlayer1D();
 }
-public int getMove(){
-return move;
+if ( smp2 == 1) {
+canvas.movePlayer2UP();
+} else if ( smp2 == 0 ) {
+// do nothing
+} else if ( smp2 == -1 ) {
+canvas.movePlayer2D();
 }
-public int getWidth(){
-return width;
-}
-public int getHeight(){
-return height;
-}
-public int ballX(){
-return ballX;
-}
-public void over(){
+if (score1 == 9 || score2 == 9 ) {
 game=false;
-repaint();
+canvas.over();
 }
-public int ballY(){
-return ballY;
+int p1X, p1Y, p2X, p2Y;
+p1X=canvas.getp1X();
+p2X=canvas.getp2X();
+p1Y=canvas.getp1Y();
+p2Y=canvas.getp2Y();
+// The ball stroke with the player 1
+if (X > p1X-(girth/2)&& X < p1X+(girth/2) && Y >= p1Y && Y <= ( p1Y+pLength ) ) {
+	if(Math.random()>0.5){
+		speed1+=(int)(Math.random()*1);
+		}
+		else{
+		speed1-=(int)(Math.random()*1);	
+		}
+s.paddleHit();
+ballright=true;
+if(smp1==1){
+ballup = false;
 }
-// Draw ball and ships
-public void paintComponent(Graphics g) {
-setOpaque(true);
-super.paintComponent(g);
-g.setColor(Color.black);
-g.fillRect(0, 0, width, height);
-g.setColor(Color.WHITE);
-int boun = height/30;
-int leng = boun/2;
-for(int i=0; i<31; i++){
-	g.fillRect(width/2, boun*i, width/500, leng);
-}
-g.fillRect(ballX, ballY, width/165, height/95 );
-// Draw paddles
-g.fillRect(p1X, p1Y, girth, pLength);
-g.fillRect(p2X, p2Y, girth, pLength);
-//Draw scores and calculate for X locations
-
-if(score1 == 0){
-	oneScore = new File("src/finish images/0.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 1){
-	oneScore = new File("src/finish images/1.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 2){
-	oneScore = new File("src/finish images/2.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 3){
-	oneScore = new File("src/finish images/3.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 4){
-	oneScore = new File("src/finish images/4.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 5){
-	oneScore = new File("src/finish images/5.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 6){
-	oneScore = new File("src/finish images/6.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 7){
-	oneScore = new File("src/finish images/7.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 8){
-	oneScore = new File("src/finish images/8.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 9){
-	oneScore = new File("src/finish images/9.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 0){
-	twoScore = new File("src/finish images/0.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 1){
-	twoScore = new File("src/finish images/1.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 2){
-	twoScore = new File("src/finish images/2.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 3){
-	twoScore = new File("src/finish images/3.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 4){
-	twoScore = new File("src/finish images/4.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 5){
-	twoScore = new File("src/finish images/5.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 6){
-	twoScore = new File("src/finish images/6.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 7){
-	twoScore = new File("src/finish images/7.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 8){
-	twoScore = new File("src/finish images/8.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 9){
-	twoScore = new File("src/finish images/9.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-
-
-g.drawImage(p1score, width/4, height/10, null);
-g.drawImage(p2score, (width/4)*3, height/10, null);
-
-if ( !game ) {
-g.drawString("Game Over", width/2, height/2);
+if(smp1==-1){
+ballup=true;
 }
 }
-public boolean getGame(){
-	return game;
+// The ball stroke with the player 2
+if(X > p2X-(girth/2)&& X < p2X+(girth/2) && Y >= p2Y && Y <= (p2Y+pLength)) {
+	if(Math.random()>0.5){
+		speed1+=(int)(Math.random()*1);
+		}
+		else{
+		speed1-=(int)(Math.random()*1);	
+		}		
+s.paddleHit();
+ballright=false;
+if(smp2==1){
+ballup=false;
 }
-// end paintComponent
-// Positions on X and Y for the ball
-public void moveBall (int nx, int ny) {
-ballX = nx;
-ballY = ny;
-repaint();
-} // end moveBall
-public void movePlayer1UP(){
-if(p1Y>0){
-p1Y-=move;
+if(smp2==-1){
+ballup=true;
 }
-repaint();
 }
-// Position on Y for the player 2
-public void movePlayer2UP(){
-if(p2Y>0){
-p2Y-=move;
+canvas.setScore1(score1);
+canvas.setScore2(score2);
+count++;
+if(count%4==0){
+canvas.setSpeed(speed++);
 }
-repaint();
+try {
+	Thread.sleep(15);
+		while(!l.shouldRun()){
+			Thread.sleep(60);
+		}
+} catch (InterruptedException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
 }
-public void movePlayer1D(){
-if(p1Y<(height-pLength)){
-p1Y+=move;
 }
-repaint();
-}
-public void movePlayer2D(){
-if(p2Y<(height-pLength)){
-p2Y+=move;
-}
-repaint();
-}
-public int getp1X () {
-return p1X;
-}
-public int getp1Y () {
-return p1Y;
-}
-public int getp2X () {
-return p2X;
-}
-public int getp2Y () {
-return p2Y;
 }
 }
