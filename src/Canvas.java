@@ -80,7 +80,7 @@ g.setColor(Color.WHITE);
 int boun = height/30;
 int leng = boun/2;
 for(int i=0; i<31; i++){
-	g.fillRect(width/2, boun*i, width/1000, leng);
+	g.fillRect(width/2, boun*i, width/500, leng);
 }
 g.fillRect(ballX, ballY, width/165, height/95 );
 // Draw paddles
