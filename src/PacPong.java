@@ -3,6 +3,8 @@
 * Runner
 */
 import java.util.Scanner;
+
+import javax.swing.JFrame;
 class PacPong {
 private int score1=0;
 private int score2=0;
@@ -24,8 +26,8 @@ screenSizeY = 600;
 screenSizeX = 1600;
 screenSizeY = 900;
 } else { // if ( screenSizeSelection == 3 ) {
-*/screenSizeX = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
-screenSizeY = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
+*/screenSizeX = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
+screenSizeY = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
 //} else {
 // add failsafe later here
 //}
@@ -43,6 +45,9 @@ boolean game = true;
 boolean ballright, ballup;
 Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
 Run l= new Run(canvas);
+l.setUndecorated(true);
+l.setAlwaysOnTop(true);
+l.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 int pLength = canvas.getPLength();
 int girth = canvas.getGirth();
 l.setVisible(true);
