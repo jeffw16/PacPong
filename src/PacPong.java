@@ -141,7 +141,7 @@ score2++;
 if ( ballup ) {
 // go up
 Y += speed; // move not found
-if (Y >= (height - (pLength/2))) { // height not found
+if (Y >= (height - (height/95))) { // height not found
 ballup= false;
 }
 } else {
@@ -153,9 +153,9 @@ ballup = true;
 }
 canvas.moveBall(X, Y);
 // Move player 1
-int smp1 = l.shouldMovePlayer1(canvas.getp1Y(),canvas.getHeight());
+int smp1 = l.shouldMovePlayer1(canvas.getp1Y(),canvas.getHeight(), canvas.getPLength());
 // Move player 2
-int smp2 = l.shouldMovePlayer2(canvas.getp2Y(),canvas.getHeight());
+int smp2 = l.shouldMovePlayer2(canvas.getp2Y(),canvas.getHeight(), canvas.getPLength());
 if ( smp1 == 1) {
 canvas.movePlayer1UP();
 } else if ( smp1 == 0 ) {
