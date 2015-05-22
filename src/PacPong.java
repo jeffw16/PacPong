@@ -268,5 +268,16 @@ try {
 	e.printStackTrace();
 }
 }
+	while(true) {
+		if (l.shouldClose()) {
+			System.exit(0);
+			break;
+		}
+		try {
+			Thread.sleep(30);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
 }
