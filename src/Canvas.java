@@ -24,8 +24,8 @@ Image p2score = null;
 public Canvas(int x, int y) {
 height = y;
 width = x;
-move = height/70;
-ballspeed = width/230;
+move = height/40;
+ballspeed = width/160;
 ballX = width/2;
 ballY = height/2;
 p1Y = height/2;
