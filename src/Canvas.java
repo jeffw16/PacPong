@@ -25,7 +25,7 @@ public Canvas(int x, int y) {
 height = y;
 width = x;
 move = height/40;
-ballspeed = width/120;
+ballspeed = width/150;
 ballX = width/2;
 ballY = height/2;
 p1Y = height/2;
@@ -115,8 +115,15 @@ g.drawImage(p1score, width/4, height/10, null);
 g.drawImage(p2score, (width/4)*3, height/10, null);
 
 	if ( !game ) {
-			g.drawString("Game Over", width/2, height/2);
-			}
+			File endGame = new File("src/finish images/game_over.png");
+			Image end = null;
+				try {
+					end = ImageIO.read(endGame);
+				} catch (IOException e) {
+					e.printStackTrace();
+					}
+					g.drawImage(end, width/5, (height/2)-150, null);
+					}
     	}    
 
 public boolean getGame(){
