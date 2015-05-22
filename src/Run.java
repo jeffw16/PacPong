@@ -2,10 +2,11 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Rectangle;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
+
 import javax.swing.JFrame;
 public class Run extends JFrame{
+private int X,Y,ballX,ballY;	
 private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right, gameTime, playTime;
 private static boolean help = true, close;
 
@@ -64,9 +65,36 @@ public Run(Canvas c) {
 			} // end switch
 		} // end keyReleased
 	});
-}
-// start mouse listener here
-// end mouse listener here
+	MListen myListener = new MListen();
+	this.addMouseMotionListener(new MouseAdapter(){
+		public void gMouseY(MouseEvent e) {
+			int Y=e.getY();
+			
+			if(Y>ballY){
+			player3Up=true;	
+			}
+			if(Y<ballY){
+			player3Up=false;	
+			}
+		}
+		public void gMouseX(MouseEvent e) {
+			
+			if(X>ballY){
+			player3Right=true;	
+			}
+			if(X<ballY){
+			player3Right=false;	
+			}
+		}
+	});
+		
+	}
+	public void setBallY(int y){
+		ballY=y;
+	}
+	public void setBallX(int x){
+		ballX=x;
+	}
 	public boolean shouldStart() {
 		return gameTime;
 	}
@@ -86,10 +114,10 @@ public Run(Canvas c) {
 		if (player1Up == true && p1Y >= 0) {
 			return 1;
 	}
-	if (player1Down == true && p1Y <= (height)) {
+		if (player1Down == true && p1Y <= (height)) {
 		return -1;
 	}
-	else{
+		else{
 		return 0;
 	}
 	} // end shouldMovePlayer1
@@ -105,7 +133,7 @@ public Run(Canvas c) {
 		return 0;
 	}
 	}
-	public int shouldMovePlayer3U(int p3X,int p3Y, int width, int height) {
+	public int shouldMovePlayer3V(int p3X,int p3Y, int width, int height) {
 	// return 1 means keep going, return 0 means need to bounce off wall
 	if ( player3Up && p3Y >= 0 ) {
 		return 1;
@@ -115,11 +143,11 @@ public Run(Canvas c) {
 		return 0;
 	}
 	}
-	public int shouldMovePlayer3D(int p3X,int p3Y, int width, int height){
+	public int shouldMovePlayer3H(int p3X,int p3Y, int width, int height){
 		if ( player3Right && p3Y <= width ) {
 				return 1;
 	} else if ( !player3Right && p3Y >= width ) {
-				return 1;
+				return -1;
 	} else {
 				return 0;
 	}
