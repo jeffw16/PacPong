@@ -24,30 +24,26 @@ public class Sound{
 			paddlePing = Applet.newAudioClip(paddleH);
 			URL wallH = Sound.class.getResource("low ping.wav");
 			wallPing = Applet.newAudioClip(wallH);
-			URL scoreC = Sound.class.getResource("loser beep.wav");
+			URL scoreC = Sound.class.getResource("loser_beep.wav");
 			scorePing = Applet.newAudioClip(scoreC);
 	
 		}
 	
-	void paddleHit(){
-		
+	void paddleHit(){		
 		
 		paddlePing.play();
 		
 	}
 	
-	void wallHit(){
-		
+	void wallHit(){		
 		
 		wallPing.play();
 		
 	}
 	
-	void scoreChange(){		
-		
+	void scoreChange(){			
 		
 		scorePing.play();
 		
 	}
 	}
-
