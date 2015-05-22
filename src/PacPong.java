@@ -193,6 +193,8 @@ canvas.moveBall(X, Y);
 int smp1 = l.shouldMovePlayer1(canvas.getp1Y(),canvas.getHeight(), canvas.getPLength());
 // Move player 2
 int smp2 = l.shouldMovePlayer2(canvas.getp2Y(),canvas.getHeight(), canvas.getPLength());
+// Move player 3
+// int smp3 = l.shouldMovePlayer3(canvas.getp3X(), canvas.getp3Y(), canvas,getWidth(), canvas.getHeight());
 if ( smp1 == 1) {
 canvas.movePlayer1UP();
 } else if ( smp1 == 0 ) {
