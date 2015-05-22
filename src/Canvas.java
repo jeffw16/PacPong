@@ -25,7 +25,7 @@ public Canvas(int x, int y) {
 height = y;
 width = x;
 move = height/40;
-ballspeed = width/20;
+ballspeed = width/150;
 ballX = width/2;
 ballY = height/2;
 p1Y = height/2;
@@ -135,7 +135,7 @@ g.drawImage(p2score, (width/4)*3, height/10, null);
 				} catch (IOException e) {
 					e.printStackTrace();
 					}
-					g.drawImage(end, width/5, (height/2)-87, null);
+					g.drawImage(end, width/5, (height/2)-150, null);
 					}
     	}    
 
