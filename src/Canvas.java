@@ -114,6 +114,15 @@ public void paintComponent(Graphics g) {
 g.drawImage(p1score, width/4, height/10, null);
 g.drawImage(p2score, (width/4)*3, height/10, null);
 
+	//displays help
+	if(Run.shouldHelp()==true) {
+		g.drawString("Controls-", 0, java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight()-200);
+		g.drawString("Left Paddle - 'W' and 'S'", 0, java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight()-175);
+		g.drawString("Right Paddle - UP and DOWN arrows", 0, java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight()-150);
+		g.drawString("Pause game - 'P'", 0, java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight()-125);
+		g.drawString("Exit game - ESC key", 0, java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight()-100);
+	}
+
 	if ( !game ) {
 			File endGame = new File("src/finish images/game_over.png");
 			Image end = null;
