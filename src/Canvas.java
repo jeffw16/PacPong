@@ -25,7 +25,7 @@ public Canvas(int x, int y) {
 height = y;
 width = x;
 move = height/40;
-ballspeed = width/160;
+ballspeed = width/120;
 ballX = width/2;
 ballY = height/2;
 p1Y = height/2;
@@ -80,191 +80,45 @@ return ballY;
 }
 // Draw ball and ships
 public void paintComponent(Graphics g) {
-setOpaque(true);
-super.paintComponent(g);
-g.setColor(Color.black);
-g.fillRect(0, 0, width, height);
-g.setColor(Color.WHITE);
-int boun = height/30;
-int leng = boun/2;
-for(int i=0; i<31; i++){
-	g.fillRect(width/2, boun*i, width/500, leng);
-}
-g.fillRect(ballX, ballY, width/165, height/95 );
-// Draw paddles
-g.fillRect(p1X, p1Y, girth, pLength);
-g.fillRect(p2X, p2Y, girth, pLength);
-//Draw scores and calculate for X locations
+		setOpaque(true);
+		super.paintComponent(g);
+		g.setColor(Color.black);
+		g.fillRect(0, 0, width, height);
+		g.setColor(Color.WHITE);
+		int boun = height/30;
+		int leng = boun/2;
+			
+		for(int i=0; i<31; i++){
+				g.fillRect(width/2, boun*i, width/500, leng);
+				}
+		g.fillRect(ballX, ballY, width/165, height/95 );
+		// Draw paddles
+		g.fillRect(p1X, p1Y, girth, pLength);
+		g.fillRect(p2X, p2Y, girth, pLength);
+		
+		//Draw scores and calculate for X locations
 
-if(score1 == 0){
-	oneScore = new File("src/finish images/0.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 1){
-	oneScore = new File("src/finish images/1.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 2){
-	oneScore = new File("src/finish images/2.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 3){
-	oneScore = new File("src/finish images/3.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 4){
-	oneScore = new File("src/finish images/4.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 5){
-	oneScore = new File("src/finish images/5.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 6){
-	oneScore = new File("src/finish images/6.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 7){
-	oneScore = new File("src/finish images/7.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 8){
-	oneScore = new File("src/finish images/8.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score1 == 9){
-	oneScore = new File("src/finish images/9.png");
-	try {
-		p1score = ImageIO.read(oneScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 0){
-	twoScore = new File("src/finish images/0.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 1){
-	twoScore = new File("src/finish images/1.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 2){
-	twoScore = new File("src/finish images/2.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 3){
-	twoScore = new File("src/finish images/3.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 4){
-	twoScore = new File("src/finish images/4.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 5){
-	twoScore = new File("src/finish images/5.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 6){
-	twoScore = new File("src/finish images/6.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 7){
-	twoScore = new File("src/finish images/7.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 8){
-	twoScore = new File("src/finish images/8.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-if(score2 == 9){
-	twoScore = new File("src/finish images/9.png");
-	try {
-		p2score = ImageIO.read(twoScore);
-	} catch (IOException e) {
-		System.err.println("Could not find image");
-	}
-}
-
-
+	oneScore = new File("src/finish images/" + score1 + ".png");
+    try{
+    	p1score = ImageIO.read(oneScore);
+    	}catch(IOException e){
+    		System.err.println("Could not find image");
+    	}
+    		
+	twoScore = new File("src/finish images/" + score2 + ".png");
+    try{
+    	p2score = ImageIO.read(twoScore);
+    	}catch(IOException q){
+    		System.err.println("Could not find image");
+    	}
 g.drawImage(p1score, width/4, height/10, null);
 g.drawImage(p2score, (width/4)*3, height/10, null);
 
-if ( !game ) {
-g.drawString("Game Over", width/2, height/2);
-}
-}
+	if ( !game ) {
+			g.drawString("Game Over", width/2, height/2);
+			}
+    	}    
+
 public boolean getGame(){
 	return game;
 }
