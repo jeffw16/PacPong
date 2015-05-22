@@ -188,6 +188,8 @@ if(Math.random()>0.5){
 ballup = true;
 }
 }
+l.setBallX(X);
+l.setBallY(Y);
 canvas.moveBall(X, Y);
 // Move player 1
 int smp1 = l.shouldMovePlayer1(canvas.getp1Y(),canvas.getHeight(), canvas.getPLength());
