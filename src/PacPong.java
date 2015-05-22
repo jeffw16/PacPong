@@ -102,7 +102,7 @@ playgame(l, canvas);
 								public void playgame(Run l, Canvas canvas) {
 									
 									
-	
+Run.setHelp(false);
 Sound s = new Sound();
 boolean ballright, ballup;
 l.setUndecorated(true);
@@ -256,13 +256,15 @@ count++;
 if(count%4==0){
 canvas.setSpeed(speed++);
 }
+if (l.shouldClose()) {
+	System.exit(0);
+}
 try {
-	Thread.sleep(30);
+	Thread.sleep(20);
 		while(!l.shouldRun()){
 			Thread.sleep(60);
 		}
 } catch (InterruptedException e) {
-	// TODO Auto-generated catch block
 	e.printStackTrace();
 }
 }
