@@ -65,7 +65,6 @@ public Run(Canvas c) {
 			} // end switch
 		} // end keyReleased
 	});
-	MListen myListener = new MListen();
 	this.addMouseMotionListener(new MouseAdapter(){
 		public void gMouseY(MouseEvent e) {
 			int Y=e.getY();
