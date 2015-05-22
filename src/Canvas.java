@@ -1,3 +1,26 @@
+/**
+* PacPong
+* Canvas
+*/
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+public class Canvas extends JPanel {
+private int height = 0;
+private int width = 0;
+private boolean game=true;
+private int ballX, ballY, p1X, p1Y, p2X, p2Y, girth, pLength;
+private int move;
+private int ballspeed;
+private int score1,score2;
+File oneScore = new File("src/finish images/0.png");
+Image p1score = null;
+File twoScore = new File("src/finish images/0.png");
+Image p2score = null;
 public Canvas(int x, int y) {
 height = y;
 width = x;
