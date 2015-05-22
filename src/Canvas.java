@@ -17,9 +17,9 @@ private int ballX, ballY, p1X, p1Y, p2X, p2Y, p3X, p3Y, girth, pLength;
 private int move;
 private int ballspeed;
 private int score1,score2;
-File oneScore = new File("src/finish images/0.png");
+File oneScore = new File("src/0.png");
 Image p1score = null;
-File twoScore = new File("src/finish images/0.png");
+File twoScore = new File("src/0.png");
 Image p2score = null;
 public Canvas(int x, int y) {
 height = y;
@@ -100,14 +100,14 @@ public void paintComponent(Graphics g) {
 		
 		//Draw scores and calculate for X locations
 
-	oneScore = new File("src/finish images/" + score1 + ".png");
+	oneScore = new File("src/" + score1 + ".png");
     try{
     	p1score = ImageIO.read(oneScore);
     	}catch(IOException e){
     		System.err.println("Could not find image");
     	}
     		
-	twoScore = new File("src/finish images/" + score2 + ".png");
+	twoScore = new File("src/" + score2 + ".png");
     try{
     	p2score = ImageIO.read(twoScore);
     	}catch(IOException q){
@@ -128,7 +128,7 @@ g.drawImage(p2score, (width/4)*3, height/10, null);
 	}
 
 	if ( !game ) {
-			File endGame = new File("src/finish images/game_over.png");
+			File endGame = new File("src/game_over.png");
 			Image end = null;
 				try {
 					end = ImageIO.read(endGame);
