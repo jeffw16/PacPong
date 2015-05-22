@@ -13,7 +13,7 @@ public class Canvas extends JPanel {
 private int height = 0;
 private int width = 0;
 private boolean game=true;
-private int ballX, ballY, p1X, p1Y, p2X, p2Y, girth, pLength;
+private int ballX, ballY, p1X, p1Y, p2X, p2Y, p3X, p3Y, girth, pLength;
 private int move;
 private int ballspeed;
 private int score1,score2;
