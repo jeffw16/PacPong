@@ -257,7 +257,7 @@ if(count%4==0){
 canvas.setSpeed(speed++);
 }
 try {
-	Thread.sleep(15);
+	Thread.sleep(30);
 		while(!l.shouldRun()){
 			Thread.sleep(60);
 		}
