@@ -172,6 +172,30 @@ p2Y+=move;
 }
 repaint();
 }
+public void movePlayer3UP () {
+	if ( p3Y > 0 ) {
+		p3Y -= move;
+	}
+	repaint();
+}
+public void movePlayer3D () {
+	if ( p3Y < height ) {
+		p3Y += move;
+	}
+	repaint();
+}
+public void movePlayer3L() {
+	if ( p3X > 0 ) {
+		p3X -= move;
+	}
+	repaint();
+}
+public void movePlayer3R() {
+	if ( p3X < width ) {
+		p3X += move;
+	}
+}
+
 public int getp1X () {
 return p1X;
 }
@@ -183,5 +207,11 @@ return p2X;
 }
 public int getp2Y () {
 return p2Y;
+}
+public int getp3X() {
+	return p3X;
+}
+public int getp3Y() {
+	return p3Y;
 }
 }
