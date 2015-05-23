@@ -110,7 +110,7 @@ public void paintComponent(Graphics g) {
 		g.fillRect(p1X, p1Y, girth, pLength);
 		g.fillRect(p2X, p2Y, girth, pLength);
 		g.setColor(Color.YELLOW);
-		g.fillOval(p3X, p3Y, pLength, pLength);
+		g.fillOval(p3X, p3Y, pLength/2, pLength/2);
 		g.setColor(Color.WHITE);
 		//Draw scores and calculate for X locations
 
@@ -198,25 +198,25 @@ repaint();
 }
 public void movePlayer3UP () {
 	if(p3Motile)
-		p3Y -= ballspeed;
+		p3Y -= ballspeed/2;
 	
 	repaint();
 }
 public void movePlayer3D () {
 	if(p3Motile)
-	p3Y += ballspeed;
+	p3Y += ballspeed/2;
 	
 	repaint();
 }
 public void movePlayer3L() {
 	if(p3Motile)
-		p3X -= ballspeed;
+		p3X -= ballspeed/2;
 	
 	repaint();
 }
 public void movePlayer3R() {
 	if(p3Motile)
-		p3X += ballspeed;
+		p3X += ballspeed/2;
 	
 	repaint();
 }
