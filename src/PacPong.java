@@ -190,8 +190,8 @@ if(Math.random()>0.5){
 ballup = true;
 }
 }
-l.setBallX(canvas.getp3X());
-l.setBallY(canvas.getp3Y());
+l.setp3X(canvas.getp3X());
+l.setp3Y(canvas.getp3Y());
 canvas.moveBall(X, Y);
 
 
@@ -202,8 +202,8 @@ int smp1 = l.shouldMovePlayer1(canvas.getp1Y(),canvas.getHeight(), canvas.getPLe
 // Move player 2
 int smp2 = l.shouldMovePlayer2(canvas.getp2Y(),canvas.getHeight(), canvas.getPLength());
 
-int smp3v = l.shouldMovePlayer3V(canvas.getp3X(), canvas.getp3Y(), canvas.getWidth(), canvas.getHeight());
-int smp3h = l.shouldMovePlayer3H(canvas.getp3X(), canvas.getp3Y(), canvas.getWidth(), canvas.getHeight());
+int smp3v = l.shouldMovePlayer3V(canvas.getp3X(), canvas.getp3Y(), canvas.getWidth(), canvas.getHeight(),canvas.getPLength());
+int smp3h = l.shouldMovePlayer3H(canvas.getp3X(), canvas.getp3Y(), canvas.getWidth(), canvas.getHeight(),canvas.getPLength());
 
 if ( smp1 == 1) {
 canvas.movePlayer1UP();
@@ -219,24 +219,26 @@ canvas.movePlayer2UP();
 } else if ( smp2 == -1 ) {
 canvas.movePlayer2D();
 }
+int p3X,p3Y;
+p3Y=canvas.getp3Y();
+p3X=canvas.getp3X();
 switch(smp3v){
 case 1 :
-	canvas.movePlayer3UP();
+	p3Y-=(speed*2)/3;
 	break;
 case -1:
-	canvas.movePlayer3D();
+	p3Y+=(speed*2)/3;
 	break;
 }
 switch(smp3h){
 case 1:
-	canvas.movePlayer3R();
+	p3X+=(speed*2)/3;
 	break;
 case -1:
-	canvas.movePlayer3L();
-	break;
-case 0:
+    p3X-=(speed*2)/3;
 	break;
 }
+canvas.movePlayer3(p3X, p3Y);
 
 if (score1 == 9 || score2 == 9 || score3 == 9) {
 game=false;
@@ -246,7 +248,7 @@ canvas.over();
 
 
 
-int p1X, p1Y, p2X, p2Y,p3X,p3Y;
+int p1X, p1Y, p2X, p2Y;
 p1X=canvas.getp1X();
 p2X=canvas.getp2X();
 p1Y=canvas.getp1Y();
@@ -271,7 +273,7 @@ ballup=true;
 }
 }
 // The ball stroke with the player 2
-if(X > p2X-(girth/2)&& X < p2X+(girth/2) && Y >= p2Y && Y <= (p2Y+pLength)) {
+if(X > p2X-(girth) && X < p2X+(girth) && Y >= p2Y && Y <= (p2Y+pLength)) {
 	if(Math.random()>0.5){
 		speed1+=(int)(Math.random()*1);
 		}
@@ -287,11 +289,12 @@ if(smp2==-1){
 ballup=true;
 }
 }
-if(canvas.p3mov())
+if(canvas.p3mov()){
 if(X>=p3X && X<=(p3X+pLength/2) && Y >= p3Y-(pLength/4) && Y<= p3Y + (pLength/4)) {
 score3++;
 canvas.p3Mot(false);
 motile=0;
+}
 }
 canvas.setScore1(score1);
 canvas.setScore2(score2);
@@ -299,13 +302,11 @@ canvas.setScore3(score3);
 if(motile<50){
 	motile++;
 }
-if(motile == 50){
+if(motile == 50 && !canvas.p3mov()){
 	canvas.p3Mot(true);
 }
 count++;
-if(count%4==0){
 canvas.setSpeed(speed++);
-}
 if(count%3==0){
 	canvas.bite();
 }
