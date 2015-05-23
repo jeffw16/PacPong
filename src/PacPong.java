@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 class PacPong {
 private int score1=0;
 private int score2=0;
+private int score3=0;
+private int motile=50;
 public static void main ( String[] args ) {
 /**Scanner chooseScreenSize = new Scanner ( System.in );
 System.out.println ( "Screen size? 1 = 800x600, 2 = 1600x900, 3 = fullscreen: " );
@@ -188,15 +190,21 @@ if(Math.random()>0.5){
 ballup = true;
 }
 }
-l.setBallX(X);
-l.setBallY(Y);
+l.setBallX(canvas.getp3X());
+l.setBallY(canvas.getp3Y());
 canvas.moveBall(X, Y);
+
+
+
+
 // Move player 1
 int smp1 = l.shouldMovePlayer1(canvas.getp1Y(),canvas.getHeight(), canvas.getPLength());
 // Move player 2
 int smp2 = l.shouldMovePlayer2(canvas.getp2Y(),canvas.getHeight(), canvas.getPLength());
-// Move player 3
-// int smp3 = l.shouldMovePlayer3(canvas.getp3X(), canvas.getp3Y(), canvas,getWidth(), canvas.getHeight());
+
+int smp3v = l.shouldMovePlayer3V(canvas.getp3X(), canvas.getp3Y(), canvas.getWidth(), canvas.getHeight());
+int smp3h = l.shouldMovePlayer3H(canvas.getp3X(), canvas.getp3Y(), canvas.getWidth(), canvas.getHeight());
+
 if ( smp1 == 1) {
 canvas.movePlayer1UP();
 } else if ( smp1 == 0 ) {
@@ -211,15 +219,40 @@ canvas.movePlayer2UP();
 } else if ( smp2 == -1 ) {
 canvas.movePlayer2D();
 }
-if (score1 == 9 || score2 == 9 ) {
+switch(smp3v){
+case 1 :
+	canvas.movePlayer3UP();
+	break;
+case -1:
+	canvas.movePlayer3D();
+	break;
+}
+switch(smp3h){
+case 1:
+	canvas.movePlayer3R();
+	break;
+case -1:
+	canvas.movePlayer3L();
+	break;
+case 0:
+	break;
+}
+
+if (score1 == 9 || score2 == 9 || score3 == 9) {
 game=false;
 canvas.over();
 }
-int p1X, p1Y, p2X, p2Y;
+
+
+
+
+int p1X, p1Y, p2X, p2Y,p3X,p3Y;
 p1X=canvas.getp1X();
 p2X=canvas.getp2X();
 p1Y=canvas.getp1Y();
 p2Y=canvas.getp2Y();
+p3Y=canvas.getp3Y();
+p3X=canvas.getp3X();
 // The ball stroke with the player 1
 if (X > p1X-(girth/2)&& X < p1X+(girth/2) && Y >= p1Y && Y <= ( p1Y+pLength ) ) {
 	if(Math.random()>0.5){
@@ -254,11 +287,27 @@ if(smp2==-1){
 ballup=true;
 }
 }
+if(canvas.p3mov())
+if(X>=p3X && X<=(p3X+pLength) && Y >= p3Y-(pLength/2) && Y<= p3Y + (pLength/2)) {
+score3++;
+canvas.p3Mot(false);
+motile=0;
+}
 canvas.setScore1(score1);
 canvas.setScore2(score2);
+canvas.setScore3(score3);
+if(motile<50){
+	motile++;
+}
+if(motile == 50){
+	canvas.p3Mot(true);
+}
 count++;
 if(count%4==0){
 canvas.setSpeed(speed++);
+}
+if(count%3==0){
+	canvas.bite();
 }
 if (l.shouldClose()) {
 	System.exit(0);
