@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.*;
 
@@ -65,25 +66,19 @@ public Run(Canvas c) {
 			} // end switch
 		} // end keyReleased
 	});
-	this.addMouseMotionListener(new MouseAdapter(){
-		public void gMouseY(MouseEvent e) {
-			int Y=e.getY();
-			
-			if(Y>ballY){
-			player3Up=true;	
-			}
-			if(Y<ballY){
-			player3Up=false;	
-			}
-		}
-		public void gMouseX(MouseEvent e) {
-			
-			if(X>ballY){
-			player3Right=true;	
-			}
-			if(X<ballY){
-			player3Right=false;	
-			}
+	this.addMouseMotionListener(new MouseMotionAdapter(){
+		public void mouseMoved(MouseEvent e) {
+			Point platz = e.getLocationOnScreen();
+			int X = (int) platz.getX();
+			int Y = (int) platz.getY();
+			if(X>ballX)
+				player3Right = true;
+			else
+				player3Right = false;
+			if(Y<ballY)
+				player3Up = true;
+			else
+				player3Up = false;
 		}
 	});
 		
@@ -137,7 +132,7 @@ public Run(Canvas c) {
 	if ( player3Up && p3Y >= 0 ) {
 		return 1;
 	} else if ( !player3Up && p3Y <= height ) {
-		return 1;
+		return -1;
 	} else {
 		return 0;
 	}
@@ -145,7 +140,7 @@ public Run(Canvas c) {
 	public int shouldMovePlayer3H(int p3X,int p3Y, int width, int height){
 		if ( player3Right && p3Y <= width ) {
 				return 1;
-	} else if ( !player3Right && p3Y >= width ) {
+	} else if ( !player3Right && p3Y >= 0 ) {
 				return -1;
 	} else {
 				return 0;
