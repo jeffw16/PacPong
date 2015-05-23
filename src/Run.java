@@ -8,7 +8,7 @@ import java.awt.event.*;
 import javax.swing.JFrame;
 public class Run extends JFrame{
 private int X,Y,ballX,ballY;	
-private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right, gameTime, playTime;
+private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right, player3Left, player3Down, gameTime, playTime;
 private static boolean help = true, close;
 
 public Run(Canvas c) {
@@ -68,25 +68,33 @@ public Run(Canvas c) {
 	});
 	this.addMouseMotionListener(new MouseMotionAdapter(){
 		public void mouseMoved(MouseEvent e) {
-			Point platz = e.getLocationOnScreen();
+			Point platz = e.getPoint();
 			int X = (int) platz.getX();
 			int Y = (int) platz.getY();
-			if(X>ballX)
+			if(X>ballX){
 				player3Right = true;
-			else
+				player3Left = false;
+			}
+			else if (X<ballX){
 				player3Right = false;
-			if(Y<ballY)
+				player3Left = true;
+			}
+			if(Y<ballY){
 				player3Up = true;
-			else
+				player3Down = false;
+			}
+			else if (Y>ballY){
 				player3Up = false;
-		}
+				player3Down = true;
+			}
+			}
 	});
 		
 	}
-	public void setBallY(int y){
+	public void setp3Y(int y){
 		ballY=y;
 	}
-	public void setBallX(int x){
+	public void setp3X(int x){
 		ballX=x;
 	}
 	public boolean shouldStart() {
@@ -127,22 +135,23 @@ public Run(Canvas c) {
 		return 0;
 	}
 	}
-	public int shouldMovePlayer3V(int p3X,int p3Y, int width, int height) {
-	// return 1 means keep going, return 0 means need to bounce off wall
-	if ( player3Up && p3Y >= 0 ) {
+	public int shouldMovePlayer3V(int p3X,int p3Y, int width, int height,int pLength) {
+	if ( player3Up && p3Y >= height/3 ) {
 		return 1;
-	} else if ( !player3Up && p3Y <= height ) {
+	} else if ( player3Down && p3Y <= (height*2)/3-pLength/2) {
 		return -1;
 	} else {
 		return 0;
 	}
 	}
-	public int shouldMovePlayer3H(int p3X,int p3Y, int width, int height){
-		if ( player3Right && p3Y <= width ) {
+	public int shouldMovePlayer3H(int p3X,int p3Y, int width, int height, int pLength){
+		if ( player3Right && p3X <= (width*2)/3 -pLength/2) {
 				return 1;
-	} else if ( !player3Right && p3Y >= 0 ) {
+	} 
+		else if ( player3Left && p3X >= width/3 ) {
 				return -1;
-	} else {
+	} 
+		else {
 				return 0;
 	}
 	}
