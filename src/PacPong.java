@@ -288,7 +288,7 @@ ballup=true;
 }
 }
 if(canvas.p3mov())
-if(X>=p3X && X<=(p3X+pLength) && Y >= p3Y-(pLength/2) && Y<= p3Y + (pLength/2)) {
+if(X>=p3X && X<=(p3X+pLength/2) && Y >= p3Y-(pLength/4) && Y<= p3Y + (pLength/4)) {
 score3++;
 canvas.p3Mot(false);
 motile=0;
