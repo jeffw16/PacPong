@@ -13,19 +13,23 @@ public class Canvas extends JPanel {
 private int height = 0;
 private int width = 0;
 private boolean game=true;
+private boolean bite=false;
 private int ballX, ballY, p1X, p1Y, p2X, p2Y, p3X, p3Y, girth, pLength;
 private int move;
 private int ballspeed;
-private int score1,score2;
+private int score1,score2,score3;
+private boolean p3Motile;
 File oneScore = new File("src/0.png");
 Image p1score = null;
 File twoScore = new File("src/0.png");
 Image p2score = null;
+File threeScore = new File("src/0.png");
+Image p3score = null;
 public Canvas(int x, int y) {
 height = y;
 width = x;
 move = height/40;
-ballspeed = width/150;
+ballspeed = width/140;
 ballX = width/2;
 ballY = height/2;
 p1Y = height/2;
@@ -39,6 +43,14 @@ girth=width/120;
 game=true;
 score1=0;
 score2=0;
+score3=0;
+p3Motile=true;
+}
+public void setScore3(int s3){
+	score3=s3;
+}
+public void bite(){
+	bite=!bite;
 }
 public int getPLength(){
 return pLength;
@@ -97,7 +109,9 @@ public void paintComponent(Graphics g) {
 		// Draw paddles
 		g.fillRect(p1X, p1Y, girth, pLength);
 		g.fillRect(p2X, p2Y, girth, pLength);
-		
+		g.setColor(Color.YELLOW);
+		g.fillOval(p3X, p3Y, pLength, pLength);
+		g.setColor(Color.WHITE);
 		//Draw scores and calculate for X locations
 
 	oneScore = new File("src/" + score1 + ".png");
@@ -113,8 +127,16 @@ public void paintComponent(Graphics g) {
     	}catch(IOException q){
     		System.err.println("Could not find image");
     	}
+    
+    threeScore = new File("src/" + score3 + ".png");
+    try{
+    	p3score = ImageIO.read(threeScore);
+    	}catch(IOException q){
+    		System.err.println("Could not find image");
+    	}
 g.drawImage(p1score, width/4, height/10, null);
 g.drawImage(p2score, (width/4)*3, height/10, null);
+g.drawImage(p3score, width/2, height/10, null);
 
 	//displays help
 	if(Run.shouldHelp()==true) {
@@ -175,27 +197,34 @@ p2Y+=move;
 repaint();
 }
 public void movePlayer3UP () {
-	if ( p3Y > 0 ) {
-		p3Y -= move;
-	}
+	if(p3Motile)
+		p3Y -= ballspeed;
+	
 	repaint();
 }
 public void movePlayer3D () {
-	if ( p3Y < height ) {
-		p3Y += move;
-	}
+	if(p3Motile)
+	p3Y += ballspeed;
+	
 	repaint();
 }
 public void movePlayer3L() {
-	if ( p3X > 0 ) {
-		p3X -= move;
-	}
+	if(p3Motile)
+		p3X -= ballspeed;
+	
 	repaint();
 }
 public void movePlayer3R() {
-	if ( p3X < width ) {
-		p3X += move;
-	}
+	if(p3Motile)
+		p3X += ballspeed;
+	
+	repaint();
+}
+public void p3Mot(boolean m){
+	p3Motile=m;
+}
+public boolean p3mov(){
+	return p3Motile;
 }
 
 public int getp1X () {
