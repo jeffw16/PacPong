@@ -25,11 +25,18 @@ File twoScore = new File("src/0.png");
 Image p2score = null;
 File threeScore = new File("src/0.png");
 Image p3score = null;
+File threeFace1 = new File("src/pacopen.png");
+Image p3Face1 = null;
 public Canvas(int x, int y) {
+try {
+	p3Face1 = ImageIO.read(threeFace1);
+} catch (IOException e) {
+	System.err.println("Could not find image");
+}	
 height = y;
 width = x;
 move = height/40;
-ballspeed = width/140;
+ballspeed = width/100;
 ballX = width/2;
 ballY = height/2;
 p1Y = height/2;
@@ -38,7 +45,7 @@ p1X = width/40;
 p2X = (width /40)*38;
 p3X = width/2;
 p3Y = height/3;
-pLength=height/10;
+pLength=height/12;
 girth=width/120;
 game=true;
 score1=0;
@@ -112,6 +119,7 @@ public void paintComponent(Graphics g) {
 		g.setColor(Color.YELLOW);
 		g.fillOval(p3X, p3Y, pLength/2, pLength/2);
 		g.setColor(Color.WHITE);
+		g.drawRect(width/3,height/3, width/3, height/3);
 		//Draw scores and calculate for X locations
 
 	oneScore = new File("src/" + score1 + ".png");
@@ -196,28 +204,11 @@ p2Y+=move;
 }
 repaint();
 }
-public void movePlayer3UP () {
-	if(p3Motile)
-		p3Y -= ballspeed/2;
-	
-	repaint();
-}
-public void movePlayer3D () {
-	if(p3Motile)
-	p3Y += ballspeed/2;
-	
-	repaint();
-}
-public void movePlayer3L() {
-	if(p3Motile)
-		p3X -= ballspeed/2;
-	
-	repaint();
-}
-public void movePlayer3R() {
-	if(p3Motile)
-		p3X += ballspeed/2;
-	
+public void movePlayer3(int x, int y) {
+	if(p3Motile){
+		p3Y = y;
+		p3X = x;
+	}
 	repaint();
 }
 public void p3Mot(boolean m){
