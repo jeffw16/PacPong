@@ -290,7 +290,7 @@ ballup=true;
 }
 }
 if(canvas.p3mov()){
-if(X>=p3X && X<=(p3X+pLength/2) && Y >= p3Y-(pLength/4) && Y<= p3Y + (pLength/4)) {
+if(X>=p3X && X<= p3X + (pLength/3)*2 && Y >= p3Y && Y<= p3Y + (pLength/3)*2) {
 score3++;
 canvas.p3Mot(false);
 motile=0;
@@ -299,6 +299,14 @@ motile=0;
 canvas.setScore1(score1);
 canvas.setScore2(score2);
 canvas.setScore3(score3);
+boolean p3bemov;
+if(!l.getp3r() && !l.getp3l() && !l.getp3u() && !l.getp3d()){
+p3bemov = false;	
+}
+else{
+	p3bemov=true;
+}
+canvas.setPac(l.getp3r(), l.getp3l(), l.getp3u(), l.getp3d());
 if(motile<50){
 	motile++;
 }
@@ -307,7 +315,7 @@ if(motile == 50 && !canvas.p3mov()){
 }
 count++;
 canvas.setSpeed(speed++);
-if(count%3==0){
+if(count%5==0 && p3bemov){
 	canvas.bite();
 }
 if (l.shouldClose()) {
