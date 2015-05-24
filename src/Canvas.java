@@ -14,6 +14,7 @@ private int height = 0;
 private int width = 0;
 private boolean game=true;
 private boolean bite=false;
+private boolean pacr, pacl, pacu, pacd; 
 private int ballX, ballY, p1X, p1Y, p2X, p2Y, p3X, p3Y, girth, pLength;
 private int move;
 private int ballspeed;
@@ -25,11 +26,67 @@ File twoScore = new File("src/0.png");
 Image p2score = null;
 File threeScore = new File("src/0.png");
 Image p3score = null;
-File threeFace1 = new File("src/pacopen.png");
-Image p3Face1 = null;
+File threeFace2 = new File("src/pacclose.png");
+Image p3Face2 = null;
+File threeFace11 = new File("src/pac_right.png");
+Image p3Face11= null;
+File threeFace12 = new File("src/pac_downright.png");
+Image p3Face12 = null;
+File threeFace13 = new File("src/pac_down.png");
+Image p3Face13 = null;
+File threeFace14 = new File("src/pac_downleft.png");
+Image p3Face14 = null;
+File threeFace15 = new File("src/pac_left.png");
+Image p3Face15 = null;
+File threeFace16 = new File("src/pac_upleft.png");
+Image p3Face16 = null;
+File threeFace17 = new File("src/pac_up.png");
+Image p3Face17 = null;
+File threeFace18 = new File("src/pac_upright.png");
+Image p3Face18 = null;
 public Canvas(int x, int y) {
 try {
-	p3Face1 = ImageIO.read(threeFace1);
+	p3Face11 = ImageIO.read(threeFace11);
+} catch (IOException e) {
+	System.err.println("Could not find image");
+}
+try {
+	p3Face12 = ImageIO.read(threeFace12);
+} catch (IOException e) {
+	System.err.println("Could not find image");
+}	
+try {
+	p3Face13 = ImageIO.read(threeFace13);
+} catch (IOException e) {
+	System.err.println("Could not find image");
+}	
+try {
+	p3Face14 = ImageIO.read(threeFace14);
+} catch (IOException e) {
+	System.err.println("Could not find image");
+}	
+try {
+	p3Face15 = ImageIO.read(threeFace15);
+} catch (IOException e) {
+	System.err.println("Could not find image");
+}	
+try {
+	p3Face16 = ImageIO.read(threeFace16);
+} catch (IOException e) {
+	System.err.println("Could not find image");
+}	
+try {
+	p3Face17 = ImageIO.read(threeFace17);
+} catch (IOException e) {
+	System.err.println("Could not find image");
+}
+try {
+	p3Face18 = ImageIO.read(threeFace18);
+} catch (IOException e) {
+	System.err.println("Could not find image");
+}	
+try {
+	p3Face2 = ImageIO.read(threeFace2);
 } catch (IOException e) {
 	System.err.println("Could not find image");
 }	
@@ -52,6 +109,12 @@ score1=0;
 score2=0;
 score3=0;
 p3Motile=true;
+}
+public void setPac(boolean r, boolean l, boolean u, boolean d){
+	pacr=r;
+	pacd=d;
+	pacu=u;
+	pacl=l;
 }
 public void setScore3(int s3){
 	score3=s3;
@@ -116,8 +179,30 @@ public void paintComponent(Graphics g) {
 		// Draw paddles
 		g.fillRect(p1X, p1Y, girth, pLength);
 		g.fillRect(p2X, p2Y, girth, pLength);
-		g.setColor(Color.YELLOW);
-		g.fillOval(p3X, p3Y, pLength/2, pLength/2);
+		int ei=(pLength/3)*2+(((pLength/3)*2)/100)*14;
+		int o=(pLength/3)*2;
+		if(bite){
+			g.drawImage(p3Face2, p3X, p3Y, (pLength/3)*2, pLength/2, null);
+		}
+		else{
+			if(pacr && !pacd && !pacu && !pacl)
+				g.drawImage(p3Face11, p3X, p3Y, o,ei, null);
+			if(pacr && pacd && !pacu && !pacl)
+				g.drawImage(p3Face12, p3X, p3Y, o, (pLength/3)*2, null);
+			if(!pacr && pacd && !pacu && !pacl)
+				g.drawImage(p3Face13, p3X, p3Y, ei, o, null);
+			if(!pacr && pacd && !pacu && pacl)
+				g.drawImage(p3Face14, p3X, p3Y, o, o, null);
+			if(!pacr && !pacd && !pacu && pacl)
+				g.drawImage(p3Face15, p3X, p3Y, o, ei, null);
+			if(!pacr && !pacd && pacu && pacl)
+				g.drawImage(p3Face16, p3X, p3Y, o, o, null);
+			if(!pacr && !pacd && pacu && !pacl)
+				g.drawImage(p3Face17, p3X, p3Y, ei, o, null);
+			if(pacr && !pacd && pacu && !pacl)
+				g.drawImage(p3Face18, p3X, p3Y, o, o, null);
+				
+		}
 		g.setColor(Color.WHITE);
 		g.drawRect(width/3,height/3, width/3, height/3);
 		//Draw scores and calculate for X locations
