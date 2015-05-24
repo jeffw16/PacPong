@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 import javax.swing.JFrame;
 public class Run extends JFrame{
-private int X,Y,ballX,ballY;	
+private int X,Y,ballX,ballY, pLong;	
 private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right, player3Left, player3Down, gameTime, playTime;
 private static boolean help = true, close;
 
@@ -71,25 +71,45 @@ public Run(Canvas c) {
 			Point platz = e.getPoint();
 			int X = (int) platz.getX();
 			int Y = (int) platz.getY();
-			if(X>ballX){
+			if(X>ballX+pLong){
 				player3Right = true;
 				player3Left = false;
 			}
-			else if (X<ballX){
+			else if (X<ballX-pLong){
 				player3Right = false;
 				player3Left = true;
 			}
-			if(Y<ballY){
+			else{
+				player3Right = false;
+				player3Left = false;
+			}
+			if(Y<ballY-pLong){
 				player3Up = true;
 				player3Down = false;
 			}
-			else if (Y>ballY){
+			else if (Y>ballY+pLong){
 				player3Up = false;
 				player3Down = true;
+			}
+			else{
+				player3Down = false;
+				player3Up = false;
 			}
 			}
 	});
 		
+	}
+	public boolean getp3r(){
+		return player3Right;
+	}
+	public boolean getp3l(){
+		return player3Left;
+	}
+	public boolean getp3d(){
+		return player3Down;
+	}
+	public boolean getp3u(){
+		return player3Up;
 	}
 	public void setp3Y(int y){
 		ballY=y;
@@ -113,18 +133,20 @@ public Run(Canvas c) {
 		help = b;
 	}
 	public int shouldMovePlayer1 (int p1Y, int height, int pLength) {
+		pLong=(pLength/2);
 		if (player1Up == true && p1Y >= 0) {
 			return 1;
 	}
 		if (player1Down == true && p1Y <= (height)) {
 		return -1;
 	}
-		else{
+		else{	
 		return 0;
-	}
+	}	
 	} // end shouldMovePlayer1
 	// Move player 2
 	public int shouldMovePlayer2(int p2Y, int height, int pLength) {
+		pLong=(pLength/2);
 		if (player2Up == true && p2Y >= 0) {
 				return 1;
 	}
