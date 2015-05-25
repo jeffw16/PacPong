@@ -240,7 +240,7 @@ case -1:
 }
 canvas.movePlayer3(p3X, p3Y);
 
-if (score1 == 9 || score2 == 9 || score3 == 9) {
+if (score1 == 6 || score2 == 6 || score3 == 9) {
 game=false;
 canvas.over();
 }
