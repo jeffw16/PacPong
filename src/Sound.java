@@ -15,7 +15,7 @@ import java.net.URL;
 
 
 public class Sound{
-	AudioClip paddlePing, wallPing, scorePing;
+	AudioClip paddlePing, wallPing, scorePing, wakka, wakka1;
 
 	public Sound(){
 
@@ -24,24 +24,39 @@ public class Sound{
 			paddlePing = Applet.newAudioClip(paddleH);
 			URL wallH = Sound.class.getResource("low ping.wav");
 			wallPing = Applet.newAudioClip(wallH);
-			URL scoreC = Sound.class.getResource("loser_beep.wav");
+			URL scoreC = Sound.class.getResource("loser beep.wav");
 			scorePing = Applet.newAudioClip(scoreC);
-	
+			URL wak = Sound.class.getResource("wakka_wakka.wav");
+			wakka = Applet.newAudioClip(wak);
+			URL wak1 = Sound.class.getResource("wakka_wakka2.wav");
+			wakka1 = Applet.newAudioClip(wak1);
 		}
-	
-	void paddleHit(){		
+	void wak(){
+		
+		wakka.play();
+		
+	}
+	void wak1(){
+		
+		wakka1.play();
+		
+	}
+	void paddleHit(){
+		
 		
 		paddlePing.play();
 		
 	}
 	
-	void wallHit(){		
+	void wallHit(){
+		
 		
 		wallPing.play();
 		
 	}
 	
-	void scoreChange(){			
+	void scoreChange(){		
+		
 		
 		scorePing.play();
 		
