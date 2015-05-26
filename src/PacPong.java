@@ -10,6 +10,7 @@ private int score1=0;
 private int score2=0;
 private int score3=0;
 private int motile=50;
+private boolean wwak=false;
 public static void main ( String[] args ) {
 /**Scanner chooseScreenSize = new Scanner ( System.in );
 System.out.println ( "Screen size? 1 = 800x600, 2 = 1600x900, 3 = fullscreen: " );
@@ -222,20 +223,29 @@ canvas.movePlayer2D();
 int p3X,p3Y;
 p3Y=canvas.getp3Y();
 p3X=canvas.getp3X();
+boolean musicmachen=true;
 switch(smp3v){
 case 1 :
 	p3Y-=(speed*2)/3;
+	if(count%4==0 && l.pm())
+		s.wak();
 	break;
 case -1:
 	p3Y+=(speed*2)/3;
+	if(count%4==0 && l.pm())
+		s.wak();
 	break;
 }
 switch(smp3h){
 case 1:
 	p3X+=(speed*2)/3;
+	if(count%4==0 && l.pm())
+		s.wak();
 	break;
 case -1:
     p3X-=(speed*2)/3;
+    if(count%4==0 && l.pm())
+		s.wak();
 	break;
 }
 canvas.movePlayer3(p3X, p3Y);
