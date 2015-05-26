@@ -15,7 +15,7 @@ private int score2=0;
 private int score3=0;
 private int motile=50;
 private boolean wwak=false;
-public static void main ( String[] args ) {
+public void init () {
 /**Scanner chooseScreenSize = new Scanner ( System.in );
 System.out.println ( "Screen size? 1 = 800x600, 2 = 1600x900, 3 = fullscreen: " );
 int screenSizeSelection;
