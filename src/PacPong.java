@@ -227,30 +227,30 @@ boolean musicmachen=true;
 switch(smp3v){
 case 1 :
 	p3Y-=(speed*2)/3;
-	if(count%4==0 && l.pm())
+	if(count%15==0 && l.pm())
 		s.wak();
 	break;
 case -1:
 	p3Y+=(speed*2)/3;
-	if(count%4==0 && l.pm())
+	if(count%15==0 && l.pm())
 		s.wak();
 	break;
 }
 switch(smp3h){
 case 1:
 	p3X+=(speed*2)/3;
-	if(count%4==0 && l.pm())
+	if(count%15==0 && l.pm())
 		s.wak();
 	break;
 case -1:
     p3X-=(speed*2)/3;
-    if(count%4==0 && l.pm())
+    if(count%15==0 && l.pm())
 		s.wak();
 	break;
 }
 canvas.movePlayer3(p3X, p3Y);
 
-if (score1 == 6 || score2 == 6 || score3 == 9) {
+if (score1 == 7 || score2 == 7 || score3 == 9) {
 game=false;
 canvas.over();
 }
