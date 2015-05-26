@@ -36,11 +36,8 @@ public class Sound{
 		wakka.play();
 		
 	}
-	void wak1(){
 		
-		wakka1.play();
-		
-	}
+	
 	void paddleHit(){
 		
 		
