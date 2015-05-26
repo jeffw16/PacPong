@@ -4,9 +4,9 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.*;
-
+import java.applet.*;
 import javax.swing.JFrame;
-public class Run extends JFrame{
+public class Run extends Applet {
 private int X,Y,ballX,ballY, pLong;	
 private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right, player3Left, player3Down, gameTime, playTime, shouldYap;
 private static boolean help = true, close;
