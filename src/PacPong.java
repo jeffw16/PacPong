@@ -7,7 +7,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.util.Scanner;
-import javax.applet.*;
+import java.applet.*;
 import javax.swing.JFrame;
 class PacPong {
 private int score1=0;
