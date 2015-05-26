@@ -8,7 +8,7 @@ import java.awt.event.*;
 import javax.swing.JFrame;
 public class Run extends JFrame{
 private int X,Y,ballX,ballY, pLong;	
-private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right, player3Left, player3Down, gameTime, playTime;
+private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right, player3Left, player3Down, gameTime, playTime, shouldYap;
 private static boolean help = true, close;
 
 public Run(Canvas c) {
@@ -16,6 +16,7 @@ public Run(Canvas c) {
 	initialize(c);
 	gameTime=false;
 	playTime=true;
+	shouldYap = true;
 	this.addKeyListener(new KeyAdapter() {
 		public void keyPressed(KeyEvent e) {
 			switch(e.getKeyCode()) {
@@ -32,7 +33,9 @@ public Run(Canvas c) {
 				case KeyEvent.VK_P :
 				playTime = !playTime;
 				break;
-				// Move p2
+				case KeyEvent.VK_J :
+				shouldYap = !shouldYap;
+				break;
 				case KeyEvent.VK_UP:
 				player2Up=true;
 				break;
@@ -104,6 +107,9 @@ public Run(Canvas c) {
 	}
 	public boolean getp3l(){
 		return player3Left;
+	}
+	public boolean pm(){
+		return shouldYap; //make the infernal noise of PMan cease
 	}
 	public boolean getp3d(){
 		return player3Down;
