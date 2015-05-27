@@ -6,19 +6,19 @@ import java.awt.Rectangle;
 import java.awt.event.*;
 import java.applet.*;
 import javax.swing.JFrame;
-public class Run extends Applet {
+public class Run extends JFrame {
 private int X,Y,ballX,ballY, pLong;	
 private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right, player3Left, player3Down, gameTime, playTime, shouldYap;
 private static boolean help = true, close;
 
 public Run(Canvas c) {
-	super();
-	initialize(c);
+	super(); //draws JFrame
+	initialize(c); //method that starts the content pane
 	gameTime=false;
 	playTime=true;
 	shouldYap = true;
 	this.addKeyListener(new KeyAdapter() {
-		public void keyPressed(KeyEvent e) {
+		public void keyPressed(KeyEvent e) { //paddle movement and various controls
 			switch(e.getKeyCode()) {
 				// Move p1
 				case KeyEvent.VK_W :
@@ -50,7 +50,7 @@ public Run(Canvas c) {
 				break;
 			} // end switch
 		} // end keyPressed
-		public void keyReleased(KeyEvent e) {
+		public void keyReleased(KeyEvent e) {  //for movement and various controls
 			switch(e.getKeyCode()) {
 				// Move player 1
 				case KeyEvent.VK_W :
@@ -69,7 +69,7 @@ public Run(Canvas c) {
 			} // end switch
 		} // end keyReleased
 	});
-	this.addMouseMotionListener(new MouseMotionAdapter(){
+	this.addMouseMotionListener(new MouseMotionAdapter(){ //Pacman movement
 		public void mouseMoved(MouseEvent e) {
 			Point platz = e.getPoint();
 			int X = (int) platz.getX();
@@ -99,11 +99,18 @@ public Run(Canvas c) {
 				player3Up = false;
 			}
 			}
+	});this.addMouseListener(new MouseAdapter(){ //Pacman stop moving
+		public void mousePressed(MouseEvent e) {
+			player3Right = false;
+			player3Left = false;
+			player3Up = false;
+			player3Down=false;
+		}
 	});
 		
 	}
-	public boolean getp3r(){
-		return player3Right;
+	public boolean getp3r(){                                                //These are accessor methods for other objs
+		return player3Right;                                           
 	}
 	public boolean getp3l(){
 		return player3Left;
@@ -117,13 +124,13 @@ public Run(Canvas c) {
 	public boolean getp3u(){
 		return player3Up;
 	}
-	public void setp3Y(int y){
+	public void setp3Y(int y){                                              //set values for movement
 		ballY=y;
 	}
 	public void setp3X(int x){
 		ballX=x;
 	}
-	public boolean shouldStart() {
+	public boolean shouldStart() {                                      // should are to access from listeners like pause etc.
 		return gameTime;
 	}
 	public static boolean shouldClose() {
@@ -138,7 +145,7 @@ public Run(Canvas c) {
 	public static void setHelp(boolean b) {
 		help = b;
 	}
-	public int shouldMovePlayer1 (int p1Y, int height, int pLength) {
+	public int shouldMovePlayer1 (int p1Y, int height, int pLength) {    //should moves dictate how pieces should move
 		pLong=(pLength/2);
 		if (player1Up == true && p1Y >= 0) {
 			return 1;
@@ -184,7 +191,7 @@ public Run(Canvas c) {
 	}
 	}
 	
-	public void initialize(Canvas can) {
+	public void initialize(Canvas can) {     //starts the JFrame
 		Dimension size= new Dimension(can.getWidth(),can.getHeight());
 		this.setSize(size);
 		this.setContentPane(can);
