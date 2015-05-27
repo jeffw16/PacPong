@@ -2,12 +2,8 @@
 * PacPong
 * Runner
 */
-import java.awt.Cursor;
-import java.awt.Point;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
 import java.util.Scanner;
-import java.applet.*;
+
 import javax.swing.JFrame;
 class PacPong {
 private int score1=0;
@@ -15,7 +11,7 @@ private int score2=0;
 private int score3=0;
 private int motile=50;
 private boolean wwak=false;
-public static void main (String [] args) {
+public static void main ( String[] args ) {
 /**Scanner chooseScreenSize = new Scanner ( System.in );
 System.out.println ( "Screen size? 1 = 800x600, 2 = 1600x900, 3 = fullscreen: " );
 int screenSizeSelection;
@@ -118,15 +114,6 @@ l.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 int pLength = canvas.getPLength();
 int girth = canvas.getGirth();
 l.setVisible(true);
-//Transparent 16 x 16 pixel cursor image.
-BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
-
-//Create a new blank cursor.
-Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(
- cursorImg, new Point(0, 0), "blank cursor");
-
-//Set the blank cursor to the JFrame.
-l.getContentPane().setCursor(blankCursor);
 boolean game = true;
 int X, Y;
 score1=0;

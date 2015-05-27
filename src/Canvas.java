@@ -6,11 +6,10 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
-import java.applet.*;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
-public class Canvas extends Applet {
+public class Canvas extends JPanel {
 private int height = 0;
 private int width = 0;
 private boolean game=true;

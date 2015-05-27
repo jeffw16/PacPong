@@ -19,21 +19,21 @@ public class Sound{
 
 	public Sound(){
 
-			System.out.println("Sound object created"); //User is told that Sound will work
-			URL paddleH = Sound.class.getResource("high ping.wav");  //import sounds
-			paddlePing = Applet.newAudioClip(paddleH);               //assign them   
+			System.out.println("Sound object created");
+			URL paddleH = Sound.class.getResource("high ping.wav");
+			paddlePing = Applet.newAudioClip(paddleH);
 			URL wallH = Sound.class.getResource("low ping.wav");
 			wallPing = Applet.newAudioClip(wallH);
 			URL scoreC = Sound.class.getResource("loser beep.wav");
 			scorePing = Applet.newAudioClip(scoreC);
 			URL wak = Sound.class.getResource("wakka_wakka.wav");
 			wakka = Applet.newAudioClip(wak);
-			URL wak1 = Sound.class.getResource("wakka_wakka2.wav"); 
+			URL wak1 = Sound.class.getResource("wakka_wakka2.wav");
 			wakka1 = Applet.newAudioClip(wak1);
 		}
 	void wak(){
 		
-		wakka.play(); //PacMan's sound
+		wakka.play();
 		
 	}
 		
@@ -41,21 +41,21 @@ public class Sound{
 	void paddleHit(){
 		
 		
-		paddlePing.play(); //sound for paddlebounce
+		paddlePing.play();
 		
 	}
 	
 	void wallHit(){
 		
 		
-		wallPing.play(); //sound for hits wall
+		wallPing.play();
 		
 	}
 	
 	void scoreChange(){		
 		
 		
-		scorePing.play(); // paddle scores
+		scorePing.play();
 		
 	}
 	}
