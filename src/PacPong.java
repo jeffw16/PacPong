@@ -2,6 +2,10 @@
 * PacPong
 * Runner
 */
+import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -114,6 +118,15 @@ l.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 int pLength = canvas.getPLength();
 int girth = canvas.getGirth();
 l.setVisible(true);
+//Transparent 16 x 16 pixel cursor image.
+BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+
+//Create a new blank cursor.
+Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(
+ cursorImg, new Point(0, 0), "blank cursor");
+
+//Set the blank cursor to the JFrame.
+l.getContentPane().setCursor(blankCursor);
 boolean game = true;
 int X, Y;
 score1=0;
@@ -325,7 +338,7 @@ if(motile == 50 && !canvas.p3mov()){
 }
 count++;
 canvas.setSpeed(speed++);
-if(count%5==0 && p3bemov){
+if(count%5==0){
 	canvas.bite();
 }
 if (l.shouldClose()) {
