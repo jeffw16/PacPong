@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 import javax.swing.JFrame;
 public class Run extends JFrame{
-private int X,Y,ballX,ballY, pLong;	
+private int X,Y,p3Y,p3X, pLong;	
 private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right, player3Left, player3Down, gameTime, playTime, shouldYap;
 private static boolean help = true, close;
 
@@ -74,11 +74,11 @@ public Run(Canvas c) {
 			Point platz = e.getPoint();
 			int X = (int) platz.getX();
 			int Y = (int) platz.getY();
-			if(X>ballX+pLong){
+			if(X>p3Y+pLong){
 				player3Right = true;
 				player3Left = false;
 			}
-			else if (X<ballX-pLong){
+			else if (X<p3Y-pLong){
 				player3Right = false;
 				player3Left = true;
 			}
@@ -86,11 +86,11 @@ public Run(Canvas c) {
 				player3Right = false;
 				player3Left = false;
 			}
-			if(Y<ballY-pLong){
+			if(Y<p3X-pLong){
 				player3Up = true;
 				player3Down = false;
 			}
-			else if (Y>ballY+pLong){
+			else if (Y>p3X+pLong){
 				player3Up = false;
 				player3Down = true;
 			}
@@ -99,6 +99,14 @@ public Run(Canvas c) {
 				player3Up = false;
 			}
 			}
+	});
+	this.addMouseListener(new MouseAdapter(){
+		public void mousePressed(MouseEvent e) {
+			player3Right = false;
+			player3Left = false;
+			player3Up = false;
+			player3Down=false;
+		}
 	});
 		
 	}
@@ -118,10 +126,10 @@ public Run(Canvas c) {
 		return player3Up;
 	}
 	public void setp3Y(int y){
-		ballY=y;
+		p3X=y;
 	}
 	public void setp3X(int x){
-		ballX=x;
+		p3Y=x;
 	}
 	public boolean shouldStart() {
 		return gameTime;
