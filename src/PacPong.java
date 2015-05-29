@@ -56,23 +56,23 @@ class PacPong {
 			sballright=false;
 			sballup=false;
 	}
-	// config ball params
+	// config ball params for the start screen
 	int sspeed = start.getSpeed();
 	int sX = start.ballX();
 	int sY = start.ballY();
 	int sheight = start.getHeight();
 	int swidth = start.getWidth();
 	int smove = start.getMove();
-	// directions in which the ball moves
+	// directions in which the ball moves start screen
 	boolean pause=true;
 	while(pause){
-		// The ball move from left to right
+		// The ball move from left to right start screen
 		if ( sballright ) {
-		sX += sspeed; // move not found
-		if (sX >= (swidth)){ // width not found
+		sX += sspeed; // moves start ball right
+		if (sX >= (swidth)){ // switchs direction if right wall hit
 		sballright= false;
 		}
-		} else {
+		} else {                  //the opposites of above
 		sX -= sspeed;
 		if ( sX <= 0) {
 		sballright = true;
@@ -81,13 +81,13 @@ class PacPong {
 		// The ball moves from up to down
 		if ( sballup ) {
 		// go up
-		sY += sspeed; // move not found
-		if (sY >= (sheight)) { // height not found
+		sY += sspeed; // sends start ball up
+		if (sY >= (sheight)) { // if start ball hits bottom wall
 		sballup= false;
 		}
 		} else {
 		// go down
-		sY -= sspeed;
+		sY -= sspeed;      //opposite of above
 		if ( sY <= 0 ) {
 		sballup = true;
 		}
@@ -110,7 +110,7 @@ class PacPong {
 	int pLength = canvas.getPLength();
 	int girth = canvas.getGirth();
 	l.setVisible(true);
-	//Transparent 16 x 16 pixel cursor image.
+	//Transparent 16 x 16 pixel cursor image. to cover original
 	BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
 	
 	//Create a new blank cursor.
@@ -142,8 +142,8 @@ class PacPong {
 	int move = canvas.getMove();
 	// The ball move from left to right
 	if ( ballright ) {
-	X += speed; // move not found
-	if (X >= width ) { // width not found
+	X += speed; // moves game ball
+	if (X >= width ) { // if wall hits score and switch direct
 	ballright= false;
 	s.scoreChange();
 	if(Math.random()>0.5){
@@ -160,7 +160,7 @@ class PacPong {
 	ballright = true;
 	s.scoreChange();
 	if(Math.random()>0.5){
-		speed1+=(int)(Math.random()*1);
+		speed1+=(int)(Math.random()*1);   //special ball randomness to increase difficulty on a bounce
 		}
 		else{
 		speed1-=(int)(Math.random()*1);	
@@ -171,8 +171,8 @@ class PacPong {
 	// The ball moves from up to down
 	if ( ballup ) {
 	// go up
-	Y += speed1; // move not found
-	if (Y >= (height - (height/95))) { // height not found
+	Y += speed1; // ball goes up
+	if (Y >= (height - (height/95))) { //collide with bottom
 		s.wallHit();
 		if(Math.random()>0.5){
 			speed1+=(int)(Math.random()*1);
