@@ -192,7 +192,7 @@ public Run(Canvas c) {
 	}
 	}
 	
-	public void initialize(Canvas can) {
+	public void initialize(Canvas can) {    //creates the window and adds the JPanel to fill it
 		Dimension size= new Dimension(can.getWidth(),can.getHeight());
 		this.setSize(size);
 		this.setContentPane(can);
