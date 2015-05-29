@@ -6,18 +6,18 @@ import java.awt.Rectangle;
 import java.awt.event.*;
 
 import javax.swing.JFrame;
-public class Run extends JFrame{
+public class Run extends JFrame{  //this is the window
 private int X,Y,p3Y,p3X, pLong;	
 private boolean player1Up, player1Down, player2Up, player2Down, player3Up, player3Right, player3Left, player3Down, gameTime, playTime, shouldYap;
 private static boolean help = true, close;
 
 public Run(Canvas c) {
-	super();
-	initialize(c);
+	super();          //these make all of
+	initialize(c);    //the windows
 	gameTime=false;
 	playTime=true;
 	shouldYap = true;
-	this.addKeyListener(new KeyAdapter() {
+	this.addKeyListener(new KeyAdapter() {         //key listeners for paddle movement, press and release
 		public void keyPressed(KeyEvent e) {
 			switch(e.getKeyCode()) {
 				// Move p1
@@ -69,7 +69,7 @@ public Run(Canvas c) {
 			} // end switch
 		} // end keyReleased
 	});
-	this.addMouseMotionListener(new MouseMotionAdapter(){
+	this.addMouseMotionListener(new MouseMotionAdapter(){   //gets mouse pos. to direct pacman
 		public void mouseMoved(MouseEvent e) {
 			Point platz = e.getPoint();
 			int X = (int) platz.getX();
@@ -100,7 +100,7 @@ public Run(Canvas c) {
 			}
 			}
 	});
-	this.addMouseListener(new MouseAdapter(){
+	this.addMouseListener(new MouseAdapter(){       //this pauses PMan when the user left clicks
 		public void mousePressed(MouseEvent e) {
 			player3Right = false;
 			player3Left = false;
@@ -110,7 +110,7 @@ public Run(Canvas c) {
 	});
 		
 	}
-	public boolean getp3r(){
+	public boolean getp3r(){         //accessor methods
 		return player3Right;
 	}
 	public boolean getp3l(){
@@ -146,7 +146,7 @@ public Run(Canvas c) {
 	public static void setHelp(boolean b) {
 		help = b;
 	}
-	public int shouldMovePlayer1 (int p1Y, int height, int pLength) {
+	public int shouldMovePlayer1 (int p1Y, int height, int pLength) {    //delivers int which directs movement of left paddle
 		pLong=(pLength/2);
 		if (player1Up == true && p1Y >= 0) {
 			return 1;
@@ -159,7 +159,7 @@ public Run(Canvas c) {
 	}	
 	} // end shouldMovePlayer1
 	// Move player 2
-	public int shouldMovePlayer2(int p2Y, int height, int pLength) {
+	public int shouldMovePlayer2(int p2Y, int height, int pLength) {   //delivers int which directs movement of right paddle
 		pLong=(pLength/2);
 		if (player2Up == true && p2Y >= 0) {
 				return 1;
@@ -171,7 +171,7 @@ public Run(Canvas c) {
 		return 0;
 	}
 	}
-	public int shouldMovePlayer3V(int p3X,int p3Y, int width, int height,int pLength) {
+	public int shouldMovePlayer3V(int p3X,int p3Y, int width, int height,int pLength) {   //delivers int which directs pacman's movement up/down
 	if ( player3Up && p3Y >= height/3 ) {
 		return 1;
 	} else if ( player3Down && p3Y <= (height*2)/3-pLength/2) {
@@ -180,7 +180,7 @@ public Run(Canvas c) {
 		return 0;
 	}
 	}
-	public int shouldMovePlayer3H(int p3X,int p3Y, int width, int height, int pLength){
+	public int shouldMovePlayer3H(int p3X,int p3Y, int width, int height, int pLength){   //delivers int which directs pacman's movement left/right
 		if ( player3Right && p3X <= (width*2)/3 -pLength/2) {
 				return 1;
 	} 
