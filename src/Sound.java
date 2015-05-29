@@ -17,7 +17,7 @@ import java.net.URL;
 public class Sound{
 	AudioClip paddlePing, wallPing, scorePing, wakka, wakka1;
 
-	public Sound(){
+	public Sound(){  //the constructor procures all thesounds through URLs then sends them into AudioClips
 
 			System.out.println("Sound object created");
 			URL paddleH = Sound.class.getResource("high ping.wav");
@@ -31,7 +31,7 @@ public class Sound{
 			URL wak1 = Sound.class.getResource("wakka_wakka2.wav");
 			wakka1 = Applet.newAudioClip(wak1);
 		}
-	void wak(){
+	void wak(){  //all below methods play sounds
 		
 		wakka.play();
 		
