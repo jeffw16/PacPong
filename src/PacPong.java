@@ -34,13 +34,17 @@ class PacPong {
 			e.printStackTrace();
 		}
 	}
+	// main game run loop
 	public void run(int screenSizeX, int screenSizeY) throws InterruptedException {
+		// create a new canvas - paint something
 		Canvas canvas = new Canvas ( screenSizeX, screenSizeY );
+		// run things on the canvas with listeners here
 		Run l = new Run(canvas);
-		
+		// booleans to check where the ball is moving
 		boolean sballright, sballup;  
 		Canvas start = new Canvas (screenSizeX, screenSizeY); 
 		Run starter = new Run(start);
+		// config jFrame
 		starter.setUndecorated(true);
 		starter.setAlwaysOnTop(true);
 		starter.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,12 +56,14 @@ class PacPong {
 			sballright=false;
 			sballup=false;
 	}
+	// config ball params
 	int sspeed = start.getSpeed();
 	int sX = start.ballX();
 	int sY = start.ballY();
 	int sheight = start.getHeight();
 	int swidth = start.getWidth();
 	int smove = start.getMove();
+	// directions in which the ball moves
 	boolean pause=true;
 	while(pause){
 		// The ball move from left to right
@@ -93,9 +99,8 @@ class PacPong {
 	starter.setVisible(false);
 	playgame(l, canvas);
 	}
-									public void playgame(Run l, Canvas canvas) {
-										
-										
+	// init the game with canvas and run
+	public void playgame(Run l, Canvas canvas) {
 	Run.setHelp(false);
 	Sound s = new Sound();
 	boolean ballright, ballup;
@@ -127,8 +132,8 @@ class PacPong {
 	}
 	int count=0;
 	int speed1 = canvas.getSpeed();
-										while ( game ) {
-																					
+	// methods to actually move the ball as well as changing score
+	while ( game ) {									
 	int speed = canvas.getSpeed();
 	X = canvas.ballX();
 	Y = canvas.ballY();
