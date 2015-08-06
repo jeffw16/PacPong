@@ -2,12 +2,12 @@
 A variation of Pong with the third player being Pac-Man, trying to eat the ball. Written in Java and uses Swing.
 
 ## Controls
-F to start
-Esc to quit
-H to toggle help options
-W/S - left paddle up/down
-Up/down - right paddle up/down
-Mouse - Pac-Man left/right/up/down
+* F to start
+* Esc to quit
+* H to toggle help options
+* W/S - left paddle up/down
+* Up/down - right paddle up/down
+* Mouse - Pac-Man left/right/up/down
 
 ## Known issues
 * The game is known to freeze at times.
